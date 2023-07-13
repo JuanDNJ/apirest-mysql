@@ -23,13 +23,13 @@ CREATE TABLE users (
 
 INSERT INTO users(user_handle, email_address, first_name, last_name, phonenumber)
 VALUES
-("mother","angeles@gmail.com","Mª Angeles","Camacho Lorente","654987123"),
-("father","juan@gmail.com","Juan","Valdivia Bizarro","821654753"),
-("juandfe","juandnjv@gmail.com","Juan Antonio","Valdivia Camacho","640282614"),
-("bolas79","francisco@gmail.com","Francisco","Valdivia Camacho","369852147"),
-("fabiolo","fabi@gmail.com","Fabian","Valdivia Camacho","789951357"),
-("nereas","nerea@gmail.com","Nerea","Valdivia Amoros","852654753"),
-("jolelito","joel@gmail.com","Joel","Valdivia Amoros","963357951");
+("mother","ange@gmail.com","Mª Ange","Matias Reverte","654987123"),
+("father","pierr@gmail.com","Pierr","Garcia Bilbo","821654753"),
+("juandfe","juandnjv@gmail.com","Juan Antonio","Garcia Matias","640282614"),
+("bolas79","francisco@gmail.com","Francisco","Garcia Matias","369852147"),
+("fabiolo","fabi@gmail.com","Fabian","Garcia Matias","789951357"),
+("nereas","nerea@gmail.com","Nerea","Garcia Amoros","852654753"),
+("jolelito","joel@gmail.com","Joel","Garcia Amoros","963357951");
 
 /**/
 
