@@ -30,3 +30,22 @@ VALUES
 ("fabiolo","fabi@gmail.com","Fabian","Valdivia Camacho","789951357"),
 ("nereas","nerea@gmail.com","Nerea","Valdivia Amoros","852654753"),
 ("jolelito","joel@gmail.com","Joel","Valdivia Amoros","963357951");
+
+/**/
+
+DROP TABLE IF EXISTS pets;
+
+CREATE TABLE pets(
+	pet_id int not null auto_increment,
+    name varchar(20) not null,
+	create_at timestamp not null default (now()),
+    primary key(pet_id)
+);
+INSERT INTO pets(name) 
+VALUES 
+("Winter"),
+("Sunn"),
+("Moonlight"),
+("Toby"),
+("Jinnx"),
+("Po");
