@@ -12,10 +12,13 @@ app.use(express.static("public")) // habilitar carpeta public
 // Routes
 import homeRouter from "./routes/index.routes.js"
 import usersRouter from "./routes/users.routes.js"
+import petsRouter  from "./routes/pets.routes.js";
+import bannersRoutes from "./routes/banners.routes.js";
 // use routes
 app.use(homeRouter) // use homeRouter
 app.use(usersRouter) // use usersRouter
-
+app.use(petsRouter) // use petsRouter
+app.use(bannersRoutes) // use bannersRoutes
 // Start server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`) // mostrar mensaje en consola
