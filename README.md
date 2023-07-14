@@ -15,3 +15,5 @@
 - DB_PASSWORD="password"
 - DB_NAME="mascotas"
 - DB_PORT="9500"
+
+# Create database MySql
