@@ -17,3 +17,4 @@
 - DB_PORT="9500"
 
 # Create database MySql
+- src/db
