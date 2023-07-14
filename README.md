@@ -16,7 +16,7 @@
 - DB_NAME="mascotas"
 - DB_PORT="9500"
 
-# Create database MySql
+## Create database MySql
 - src/db/database.sql
  - Copy or import the code, from the database.sql file, and paste it into your preferred App, which accepts the .sql extension.
 
