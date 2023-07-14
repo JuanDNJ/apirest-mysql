@@ -1,6 +1,7 @@
 # apirest-mysql
 ##  Create file .env
 ##  Edit .env
+-- Conexion con la base de datos mysql
 - PORT_SERVER="3000"
 - DB_HOST="localhost"
 - DB_USER="username"
