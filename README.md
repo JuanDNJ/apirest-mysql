@@ -1,4 +1,4 @@
-# apirest-mysql
+# Api MysSql
 ##  Create file .env
 ##  Edit .env
 #### Connection with mysql database
