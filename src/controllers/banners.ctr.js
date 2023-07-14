@@ -6,7 +6,7 @@ export default {
             if(banners.length === 0) return res.status(404).json({ error: "No hay banners" })   
             return res.status(200).json(banners)
         } catch (error) {
-            res.status(500).json({ error: error.message })
+            return res.status(500).json({ error: error.message })
         }
     }
 }
