@@ -18,4 +18,5 @@
 
 # Create database MySql
 - src/db/database.sql
- - Copy the code, from the database.sql file, and paste it into your preferred App, which accepts the .sql extension.
+ - Copy or import the code, from the database.sql file, and paste it into your preferred App, which accepts the .sql extension.
+
