@@ -25,5 +25,28 @@ export const pets = {
             return res.status(500).json({error: err.message}) // enviar error
         }
     },
+    get: async (req, res) => {
+        try {
+            const {id} = req.params
+            const poolQuery = `SELECT * FROM pets WHERE pet_id = ${id}`
+            const [pet] = await pool.query(poolQuery)
+            if(pet.length === 0) return res.status(404).json({error: "No se encontró la mascota"})
+            return res.status(200).json(pet[0])
+        } catch (error) {
+            return res.status(500).json({error: error.message})
+        }
+    },
+    // Metodo para filtrar mascotas por categorias
+    filter: async (req, res) => {
+        try {
+            const {category} = req.params
+            const poolQuery = `SELECT * FROM pets WHERE category = '${category}'`
+            const [pets] = await pool.query(poolQuery)
+            if(pets.length === 0) return res.status(404).json({error: "No hay mascotas registradas"})
+            return res.status(200).json(pets)
+        } catch (error) {
+            return res.status(500).json({error: error.message})
+        }
+    }
 }
 

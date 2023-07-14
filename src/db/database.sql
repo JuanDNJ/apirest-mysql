@@ -50,11 +50,21 @@ VALUES
 ("Sunn","https://estaticos-cdn.prensaiberica.es/clip/823f515c-8143-4044-8f13-85ea1ef58f3a_16-9-discover-aspect-ratio_default_0.jpg",3,"dogs"),
 ("Moonlight","https://images.unsplash.com/photo-1535591273668-578e31182c4f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjM2NTI5fQ",1,"fish"),
 ("Toby","https://images.theconversation.com/files/525305/original/file-20230510-15-ol6krl.jpg?ixlib=rb-1.1.0&rect=0%2C552%2C4500%2C2250&q=45&auto=format&w=668&h=324&fit=crop",1,"rodents"),
+("Sit","https://www.diariodesevilla.es/2023/05/07/sociedad/Descubre-curiosidades-hamster-mascotas_1790831708_183903754_667x375.jpg",2,"rodents"),
+("Small","https://www.elmueble.com/medio/2022/06/09/hamster_b72d1bb0_1200x630.jpg",3,"rodents"),
+("Black Elles","https://www.elmueble.com/medio/2022/06/09/hamster_608da04e_1000x686.jpg",6,"rodents"),
+("Mari","https://images.hola.com/imagenes/mascotas/20211116199664/hamster-cuanto-tiempo-vive-dn/1-20-137/cuanto-vive-hamster-enfermedades-t.jpg",1,"rodents"),
 ("Jinnx","https://c.files.bbci.co.uk/48DD/production/_107435681_perro1.jpg",2,"dogs"),
 ("Jilger","https://www.thesprucepets.com/thmb/r23RBk0t4DC9UHp2pTzuXLz7Jj4=/3600x0/filters:no_upscale():strip_icc()/popular-small-bird-species-390926-hero-d3d0af7bb6ed4947b0c3c5afb4784456.jpg",0.5,"birds"),
+("Yellow","https://scx2.b-cdn.net/gfx/news/hires/2022/birds-1.jpg",5,"birds"),
 ("Colorin","https://media.newyorker.com/photos/5a95a5b13d9089123c9fdb7e/1:1/w_3289,h_3289,c_limit/Petrusich-Dont-Mess-with-the-Birds.jpg",1,"birds"),
+("Shaco","https://www.thespruce.com/thmb/8gZkGMzHNAMhbMPY6bbFsLT2Os4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/types-of-birds-of-prey-387307-hero-bbcd393587da4b039f58dfbe4e996cf4.jpg",2,"birds"),
 ("Boby","https://images.hola.com/imagenes/mascotas/20230428231045/razas-perros-toy/1-242-978/schnauzer-miniatura-m.jpg?tx=w_680",7,"dogs"),
+("Serpi","https://www.hospitalveterinariglories.com/wp-content/uploads/2022/03/30-03-22-%C2%BFQue%CC%81-es-la-brumacio%CC%81n-en-los-reptiles-676x451.jpg",2,"reptiles"),
 ("Tobias","https://www.nationalgeographic.com.es/medio/2022/04/26/camaleon_4fcd8b91_800x800.jpg",10,"reptiles"),
+("Slow","https://www.prensa-latina.cu/wp-content/uploads/2022/06/64-A-Las-tortugas-son-animales-anfibios-1.jpg",15,"reptiles"),
+("Lara","https://cdn-prd.content.metamorphosis.com/wp-content/uploads/sites/6/2022/12/shutterstock_781327003-1-768x512.jpg",1,"cats"),
+("Misino","https://s01.sgp1.cdn.digitaloceanspaces.com/article/51036-cwobnirfka-1580816618.jpeg",1,"cats"),
 ("Po","https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png",5,"cats");
 
 DROP TABLE IF EXISTS banners;
