@@ -3,5 +3,5 @@ import { pets } from "../controllers/pets.ctr.js"; // importar objeto con los m√
 const router = Router(); // inicializar router
 
 router.get('/pets', pets.getAll)
-
+router.get('/pets/:search', pets.search)
 export default router; // exportar router
