@@ -1,10 +1,8 @@
 # Api MysSql
 ### git clone https://github.com/JuanDNJ/apirest-mysql.git
-npm install
-# or
-yarn install
-# or
-pnpm install
+- npm install or npm i
+- yarn install
+- pnpm install
 
 ##  Create file .env
 ##  Edit .env
