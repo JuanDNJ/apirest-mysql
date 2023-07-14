@@ -1,7 +1,7 @@
 # Api MysSql
 
-# npm i or npm install
-# npm run dev
+#### npm i or npm install
+#### npm run dev
 
 ##  Create file .env
 ##  Edit .env
