@@ -15,7 +15,9 @@ import petsRouter  from "./routes/pets.routes.js";
 import bannersRoutes from "./routes/banners.routes.js";
 import frontPageRouter from "./routes/front-page.routes.js";
 import articlesRouter from "./routes/articles.routes.js";
+import configRouter from "./routes/config.routes.js";
 import { page404 } from "./midlewares/index.js"
+import { config } from "dotenv"
 // use routes
 app.use(homeRouter) // use homeRouter
 app.use(usersRouter) // use usersRouter
@@ -23,6 +25,7 @@ app.use(petsRouter) // use petsRouter
 app.use(bannersRoutes) // use bannersRoutes
 app.use(frontPageRouter) // use frontPageRouter
 app.use(articlesRouter) // use articlesRouter
+app.use(configRouter) // use configRouter (midleware para manejar errores 500
 // Error 404
 app.use(page404) // use page404 (midleware para manejar errores 404)
 

@@ -135,3 +135,31 @@ VALUES
 ("Mi segundo articulo","Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde officiis quasi deserunt quia suscipit. Laborum quasi, veritatis esse repudiandae cumque, magni iusto cum repellat enim dolores numquam maxime omnis doloribus? Beatae, nobis quis. Modi dolorum doloremque aspernatur aut similique fuga itaque, voluptas vero? Dolore, doloribus! Iure aperiam quisquam accusantium ipsam quidem exercitationem laboriosam facilis, earum nesciunt expedita assumenda atque voluptatibus officia ex animi non inventore cumque tempora consectetur nisi ullam voluptatem quam? Voluptate magnam velit beatae deleniti quos vitae eos sit minima! Non, quae? Voluptatibus consequuntur ducimus porro sequi voluptates similique est laborum repellendus, rem dolores eum tempore, molestias quam!"),
 ("Mi tercer articulo","Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde officiis quasi deserunt quia suscipit. Laborum quasi, veritatis esse repudiandae cumque, magni iusto cum repellat enim dolores numquam maxime omnis doloribus? Beatae, nobis quis. Modi dolorum doloremque aspernatur aut similique fuga itaque, voluptas vero? Dolore, doloribus! Iure aperiam quisquam accusantium ipsam quidem exercitationem laboriosam facilis, earum nesciunt expedita assumenda atque voluptatibus officia ex animi non inventore cumque tempora consectetur nisi ullam voluptatem quam? Voluptate magnam velit beatae deleniti quos vitae eos sit minima! Non, quae? Voluptatibus consequuntur ducimus porro sequi voluptates similique est laborum repellendus, rem dolores eum tempore, molestias quam!"),
 ("Mi cuarto articulo","Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde officiis quasi deserunt quia suscipit. Laborum quasi, veritatis esse repudiandae cumque, magni iusto cum repellat enim dolores numquam maxime omnis doloribus? Beatae, nobis quis. Modi dolorum doloremque aspernatur aut similique fuga itaque, voluptas vero? Dolore, doloribus! Iure aperiam quisquam accusantium ipsam quidem exercitationem laboriosam facilis, earum nesciunt expedita assumenda atque voluptatibus officia ex animi non inventore cumque tempora consectetur nisi ullam voluptatem quam? Voluptate magnam velit beatae deleniti quos vitae eos sit minima! Non, quae? Voluptatibus consequuntur ducimus porro sequi voluptates similique est laborum repellendus, rem dolores eum tempore, molestias quam!");
+
+DROP TABLE IF EXISTS config;
+
+CREATE TABLE config(
+	config_id int not null auto_increment,
+    title char(50) not null,
+    description varchar(1000) not null,
+    admin char(50) not null,
+    direcction varchar(100) null,
+    email char(100) not null,
+    photo_url varchar(255) null,
+    logo_url varchar(255) not null,
+    title_color char(20) null,
+    text_color char(20) null,
+	create_at timestamp not null default (now()),
+    primary key(config_id)
+);
+INSERT INTO config(title, description, admin, email, photo_url, logo_url, title_color, text_color) 
+VALUES 
+(
+    "ADOPTA UN AMIGO",
+    "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde officiis quasi deserunt quia suscipit. Laborum quasi, veritatis esse repudiandae cumque, magni iusto cum repellat enim dolores numquam maxime omnis doloribus? Beatae, nobis quis. Modi dolorum doloremque aspernatur aut similique fuga itaque, voluptas vero? Dolore, doloribus! Iure aperiam quisquam accusantium ipsam quidem exercitationem laboriosam facilis, earum nesciunt expedita assumenda atque voluptatibus officia ex animi non inventore cumque tempora consectetur nisi ullam voluptatem quam? Voluptate magnam velit beatae deleniti quos vitae eos sit minima! Non, quae? Voluptatibus consequuntur ducimus porro sequi voluptates similique est laborum repellendus, rem dolores eum tempore, molestias quam!",
+    "Juan Antonio Valdivia Camacho",
+    "juandevnjv@gmail.com",
+    "https://firebasestorage.googleapis.com/v0/b/juandfe.appspot.com/o/api%2Fv1%2Fpets%2Fdogs%2Fperros1024x1024.jpg?alt",
+    "react.svg",
+    "snow",
+    "silver");
