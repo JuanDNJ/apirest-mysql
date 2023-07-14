@@ -1,4 +1,8 @@
 # Api MysSql
+
+# npm i or npm install
+# npm run dev
+
 ##  Create file .env
 ##  Edit .env
 #### Connection with mysql database
