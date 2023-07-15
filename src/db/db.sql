@@ -11,23 +11,29 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
 	user_id int not null auto_increment,
     user_handle varchar(50) not null unique,
-    email_address varchar(50) not null unique,
     first_name varchar(50) not null,
     last_name varchar(100) not null,
-    phonenumber char(10) unique,
+    email varchar(50) not null unique,
+    password char(50) null,
+    role char(20) not null default('user'),
+    is_active boolean not null default false,
+    age int(3) null default(null),
+    address varchar(255) null,
+    photo_url varchar(500) not null default('http://avatar.png'),
+    phone_number char(12) unique,
     create_at timestamp not null default (now()),
     primary key(user_id)
 );
 
-INSERT INTO users(user_handle, email_address, first_name, last_name, phonenumber)
+INSERT INTO users(user_handle, first_name, last_name, email, password, role, age, address, phone_number)
 VALUES
-("mother","angeles@gmail.com","Mª Angeles","Camacho Lorente","654987123"),
-("father","juan@gmail.com","Juan","Valdivia Bizarro","821654753"),
-("juandfe","juandnjv@gmail.com","Juan Antonio","Valdivia Camacho","640282614"),
-("bolas79","francisco@gmail.com","Francisco","Valdivia Camacho","369852147"),
-("fabiolo","fabi@gmail.com","Fabian","Valdivia Camacho","789951357"),
-("nereas","nerea@gmail.com","Nerea","Valdivia Amoros","852654753"),
-("jolelito","joel@gmail.com","Joel","Valdivia Amoros","963357951");
+("mother","Mª Angeles", "Camacho Lorente", "angeles@gmail.com", "test123", "user", "85", "", "654987123"),
+("father","Juan", "Valdivia Bizarro", "juan@gmail.com", "test123", "user", "87",  "", "821654753"),
+("juandfe", "Juan Antonio", "Valdivia Camacho", "juandnjv@gmail.com", "test123", "admin", "48",  "", "640282614"),
+("bolas79", "Francisco", "Valdivia Camacho", "francisco@gmail.com", "test123", "user", "45",  "", "369852147"),
+("fabiolo", "Fabian", "Valdivia Camacho", "fabi@gmail.com", "test123", "user", "46",  "", "789951357"),
+("nereas", "Nerea", "Valdivia Amoros", "nerea@gmail.com", "test123", "user", "13",  "", "852654753"),
+("jolelito", "Joel", "Valdivia Amoros", "joel@gmail.com", "test123", "user", "10",  "", "963357951");
 
 /**/
 
