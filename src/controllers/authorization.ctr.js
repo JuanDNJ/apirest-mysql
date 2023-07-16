@@ -1,15 +1,19 @@
 import pool from "../db/pool.js";
+import { helperValidField } from "../helpers/index.js";
 export const authorization = {
     // Methods
     login: async (req, res) => { // método para iniciar sesión
         try {
             const { email, password } = req.body; // obtener datos de la petición
-            if(email === undefined || password === undefined || email.length === 0 || password.length === 0) return res.status(401).json({message: "The fields, password and email, cannot be empty."})// si no hay datos, enviar error
-            const query = "SELECT * FROM users where email = '" + email.trim() + "' and password = '" + password.trim() + "'"; // crear consulta
-            const poolQueryUsers = await pool.query(query); // ejecutar consulta
-            const users = [...poolQueryUsers[0]]; // obtener usuarios
-            if(users.length === 0) return res.status(401).json({message: "user not found"})// si no hay usuarios, enviar error   
-            return res.status(200).json(users); // enviar respuesta 
+            const validEmail = helperValidField("email", email)
+            const validPassword = helperValidField("password", password)
+            res.status(200).json({validEmail, validPassword})
+            // if(email === undefined || password === undefined || email.length === 0 || password.length === 0) return res.status(401).json({message: "The fields, password and email, cannot be empty."})// si no hay datos, enviar error
+            // const query = "SELECT * FROM users where email = '" + email.trim() + "' and password = '" + password.trim() + "'"; // crear consulta
+            // const poolQueryUsers = await pool.query(query); // ejecutar consulta
+            // const users = [...poolQueryUsers[0]]; // obtener usuarios
+            // if(users.length === 0) return res.status(401).json({message: "user not found"})// si no hay usuarios, enviar error   
+            // return res.status(200).json(users); // enviar respuesta 
         } catch (error) {
             return res.status(500).json({ error: error.message }) // enviar error
         }
