@@ -4,14 +4,23 @@ export const authorization = {
     login: async (req, res) => { // método para iniciar sesión
         try {
             const { email, password } = req.body; // obtener datos de la petición
-            return res.status(200).json({ email, password }); // enviar respuesta 
+            if(email === undefined || password === undefined || email.length === 0 || password.length === 0) return res.status(401).json({message: "The fields, password and email, cannot be empty."})// si no hay datos, enviar error
+            const query = "SELECT * FROM users where email = '" + email.trim() + "' and password = '" + password.trim() + "'"; // crear consulta
+            const poolQueryUsers = await pool.query(query); // ejecutar consulta
+            const users = [...poolQueryUsers[0]]; // obtener usuarios
+            if(users.length === 0) return res.status(401).json({message: "user not found"})// si no hay usuarios, enviar error   
+            return res.status(200).json(users); // enviar respuesta 
         } catch (error) {
             return res.status(500).json({ error: error.message }) // enviar error
         }
+        
     },
     register: async (req, res) => { 
         try {
             const {user_handler, first_name,last_name, email, password, age, address, phone_number } = req.body; // obtener datos de la petición
+            if(password.length > 15) return res.status(401).json({message: "The password cannot be longer than 15 characters."}) // si la contraseña es mayor a 15 caracteres, enviar error
+            if(password.length < 6) return res.status(401).json({message: "The password cannot be less than 6 characters."}) // si la contraseña es menor a 8 caracteres, enviar error
+            if(password.match(/[^a-zA-Z0-9]/g)) return res.status(401).json({message: "The password can only contain letters and numbers."}) // si la contraseña contiene caracteres especiales, enviar error
             // console.log({ user_handler,first_name,last_name, email, password, age, address, phone_number })
             const poolQueryUsers = await pool.query("SELECT * FROM users"); // ejecutar consulta
             const users = [...poolQueryUsers[0]]; // obtener usuarios
