@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
 	user_id int not null auto_increment,
-    user_handle varchar(50) not null unique,
+    user_handle varchar(20) not null unique,
     first_name varchar(50) not null,
     last_name varchar(100) not null,
     email varchar(50) not null unique,
@@ -27,7 +27,7 @@ CREATE TABLE users (
 
 INSERT INTO users(user_handle, first_name, last_name, email, password, role, age, address, phone_number)
 VALUES
-("mother","Mª Angeles", "Camacho Lorente", "angeles@gmail.com", "test123", "user", "85", "", "654987123"),
+("mother","Mª Angeles", "Camacho Lorente", "angeles@gmail.com", "NereaJoel@2023", "user", "85", "", "654987123"),
 ("father","Juan", "Valdivia Bizarro", "juan@gmail.com", "test123", "user", "87",  "", "821654753"),
 ("juandfe", "Juan Antonio", "Valdivia Camacho", "juandnjv@gmail.com", "test123", "admin", "48",  "", "640282614"),
 ("bolas79", "Francisco", "Valdivia Camacho", "francisco@gmail.com", "test123", "user", "45",  "", "369852147"),
