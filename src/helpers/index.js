@@ -1,4 +1,4 @@
-export const helperValidateEmailAndPassword = (field, value) => {
+export const helperValidField = (field, value) => {
     try {
         if (typeof value !== "string") return { message: "The field must be a string." } // si el campo no es un string, enviar error    
         if (value.length === 0) return { message: "The field cannot be empty." }// si el campo está vacío, enviar error   
