@@ -1,5 +1,7 @@
 import validField from "./validate-field.helper.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { hashSecretKey } from "../config/index.js";
 
 const handlerHashString = async (string, genSalt) => {
     try {
@@ -19,8 +21,29 @@ const handlerCompareHashString = async (string, hash) => {
         throw new Error(error);
     }
 }
+const handlerJwtSign = async (string) => {
+    try {
+        const jwtSign = jwt.sign(string, hashSecretKey);
+        console.log(jwtSign);
+        return jwtSign;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+const handlerJwtVerify = async (string) => {
+    try {
+        const jwtVerify = jwt.verify(string, hashSecretKey);
+        console.log(jwtVerify);
+        return jwtVerify;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 export {
     validField,
     handlerHashString,
-    handlerCompareHashString
+    handlerCompareHashString,
+    handlerJwtSign,
+    handlerJwtVerify,
 }

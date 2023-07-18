@@ -1,6 +1,6 @@
 import pool from "../db/pool.js"
 import bcrypt from "bcrypt"
-import { validField, handlerHashString, handlerCompareHashString } from "../helpers/index.js"
+import { validField, handlerHashString, handlerCompareHashString, handlerJwtSign } from "../helpers/index.js"
 
 export const authorization = {
     // Methods
@@ -32,8 +32,9 @@ export const authorization = {
             // Si no tenemos match, enviar error   
             if (!match) return res.status(401).json({ message: "User not found!" })
 
+
             // Si tenemos match, enviar respuesta
-            return res.status(200).json({ user, login: match })
+            return res.status(200).json({ user, login: match, token: await handlerJwtSign({ user_id: user.user_id, role: user.role }) })
 
         } catch (error) {
             // Si hay un error, enviar error
@@ -75,6 +76,7 @@ export const authorization = {
                 user_id: poolQueryAddUser[0].insertId,
                 user_handler,
                 email,
+                token: await handlerJwtSign({ user_id: poolQueryAddUser[0].insertId, role: 'guest' })
             }
             return res.status(200).json(newUser) // enviar respuesta
 
