@@ -1,10 +1,15 @@
-import pool from "../db/pool.js";
-import { validField } from "../helpers/index.js";
+import pool from "../db/pool.js"
+import bcrypt from "bcrypt"
+import { validField, handlerHashString, handlerCompareHashString } from "../helpers/index.js"
+
 export const authorization = {
     // Methods
     login: async (req, res) => { // método para iniciar sesión
         try {
-            const { email, password } = req.body; // obtener datos de la petición
+            // obtener datos de la petición
+            let { email, password } = req.body;
+
+            // validar los datos de la petición
             const validEmail = validField("email", email)
             const validPassword = validField("password", password)
             if (!validEmail.valid) {
@@ -13,49 +18,66 @@ export const authorization = {
             if (!validPassword.valid) {
                 return res.status(401).json({ message: validPassword.message })
             }
-            /*TODO:Cambiar sentencia por (SELECT * FROM users) para hacer comprobaciones en un array*/
-            const query = "SELECT * FROM users where email = '" + email.trim() + "' and password = '" + password.trim() + "'"; // crear consulta
-                const poolQueryUsers = await pool.query(query); // ejecutar consulta
-                const users = [...poolQueryUsers[0]]; // obtener usuarios
-                if (users.length === 0) return res.status(401).json({ message: "User not found!" })// si no hay usuarios, enviar error   
-                return res.status(200).json(users); // enviar respuesta 
+
+            // Crear consulta para obtener el usuario
+            const query = `SELECT * FROM users where email = '${email.trim()}'`
+            // ejecutar consulta
+            const poolQueryUsers = await pool.query(query);
+            // Crear un objeto con los datos del usuario
+            const user = poolQueryUsers[0][0];
+
+            // validar password comparando el hash de la base de datos con el password enviado
+            const match = await handlerCompareHashString(password, user.password)
+
+            // Si no tenemos match, enviar error   
+            if (!match) return res.status(401).json({ message: "User not found!" })
+
+            // Si tenemos match, enviar respuesta
+            return res.status(200).json({ user, login: match })
+
         } catch (error) {
-            return res.status(500).json({ error: error.message }) // enviar error
+            // Si hay un error, enviar error
+            return res.status(500).json({ error: error.message })
         }
 
     },
     register: async (req, res) => {
         try {
-            const { user_handler, first_name, last_name, email, password, age, address, phone_number } = req.body; // obtener datos de la petición
-            if (password.length > 15) return res.status(401).json({ message: "The password cannot be longer than 15 characters." }) // si la contraseña es mayor a 15 caracteres, enviar error
-            if (password.length < 6) return res.status(401).json({ message: "The password cannot be less than 6 characters." }) // si la contraseña es menor a 8 caracteres, enviar error
-            if (password.match(/[^a-zA-Z0-9]/g)) return res.status(401).json({ message: "The password can only contain letters and numbers." }) // si la contraseña contiene caracteres especiales, enviar error
-            // console.log({ user_handler,first_name,last_name, email, password, age, address, phone_number })
+            const { user_handler, email, password } = req.body; // obtener datos de la petición
+            const validEmail = validField("email", email)
+            const validPassword = validField("password", password)
+            const validUserHandler = validField("user_handler", user_handler)
+            if (!validEmail.valid) {
+                return res.status(401).json({ message: validEmail.message })
+            }
+            if (!validPassword.valid) {
+                return res.status(401).json({ message: validPassword.message })
+            }
+            if (!validUserHandler.valid) {
+                return res.status(401).json({ message: validUserHandler.message })
+            }
             const poolQueryUsers = await pool.query("SELECT * FROM users"); // ejecutar consulta
             const users = [...poolQueryUsers[0]]; // obtener usuarios
             // validar si el usuario ya existe
-            const match = users.find(user => user.email === email || user.user_handler === user_handler || user.phone_number === phone_number)
-            if (match) return res.status(401) // si el usuario ya existe, enviar error
-
+            const match = users.find(user => user.email === email || user.user_handler === user_handler)
+            // si el usuario ya existe, enviar error
+            if (match) return res.status(401).json({ message: "User already exists!" })
+            // si el usuario no existe, encriptar la contraseña
+            const hashPassword = await handlerHashString(password, 10)
             // si el usuario no existe, agregarlo a la base de datos
             const poolQueryAddUser = await pool.query(`
-            INSERT INTO users(user_handle, first_name, last_name, email, password, age, address, phone_number) 
-            VALUES ('${user_handler}','${first_name}','${last_name}','${email}','${password}','${age}','${address}','${phone_number}')`)
+                INSERT INTO users(user_handle, email, password) 
+                VALUES ('${user_handler}','${email}','${hashPassword}')`)
 
             if (!poolQueryAddUser.length) return res.status(401) // si no se pudo agregar el usuario, enviar error
             // si se pudo agregar el usuario, enviar respuesta
             const newUser = {
                 user_id: poolQueryAddUser[0].insertId,
                 user_handler,
-                first_name,
-                last_name,
                 email,
-                password,
-                age,
-                address,
-                phone_number
             }
-            return res.status(200).json(newUser); // enviar respuesta
+            return res.status(200).json(newUser) // enviar respuesta
+
         } catch (error) {
             return res.status(500).json({ error: error.message }) // enviar error
         }

@@ -11,12 +11,12 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
 	user_id int not null auto_increment,
     user_handle varchar(20) not null unique,
-    first_name varchar(50) not null,
-    last_name varchar(100) not null,
+    first_name varchar(50) null,
+    last_name varchar(100) null,
     email varchar(50) not null unique,
-    password char(50) null,
+    password varchar(500) null,
     role char(20) not null default('user'),
-    is_active boolean not null default false,
+    is_active boolean not null default true,
     age int(3) null default(null),
     address varchar(255) null,
     photo_url varchar(500) not null default('http://avatar.png'),
@@ -36,6 +36,22 @@ VALUES
 ("jolelito", "Joel", "Valdivia Amoros", "joel@gmail.com", "test123", "user", "10",  "", "963357951");
 
 /**/
+DROP TABLE IF EXISTS roles;
+
+CREATE TABLE roles(
+	rol_id int not null auto_increment,
+    name char(20) not null unique,
+    level int(2) not null default(0),
+    create_at timestamp not null default (now()),
+    primary key(rol_id)
+);
+INSERT INTO roles(name, level) 
+VALUES
+("admin", 4),
+("moderator", 3),
+("colaborator", 2),
+("guest", 0),
+("user",1);
 
 DROP TABLE IF EXISTS pets;
 
