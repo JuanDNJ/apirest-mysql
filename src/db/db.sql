@@ -19,21 +19,15 @@ CREATE TABLE users (
     is_active boolean not null default true,
     age int(3) null default(null),
     address varchar(255) null,
-    photo_url varchar(500) not null default('http://avatar.png'),
+    photo_url varchar(500) not null default('http://localhost:5174/juan-perfil32x32.jpg'),
     phone_number char(12) unique,
     create_at timestamp not null default (now()),
     primary key(user_id)
 );
 
-INSERT INTO users(user_handle, first_name, last_name, email, password, role, age, address, phone_number)
+INSERT INTO users(user_handle, first_name, email, password, role, phone_number)
 VALUES
-("mother","Mª Angeles", "Camacho Lorente", "angeles@gmail.com", "NereaJoel@2023", "user", "85", "", "654987123"),
-("father","Juan", "Valdivia Bizarro", "juan@gmail.com", "test123", "user", "87",  "", "821654753"),
-("juandfe", "Juan Antonio", "Valdivia Camacho", "juandnjv@gmail.com", "test123", "admin", "48",  "", "640282614"),
-("bolas79", "Francisco", "Valdivia Camacho", "francisco@gmail.com", "test123", "user", "45",  "", "369852147"),
-("fabiolo", "Fabian", "Valdivia Camacho", "fabi@gmail.com", "test123", "user", "46",  "", "789951357"),
-("nereas", "Nerea", "Valdivia Amoros", "nerea@gmail.com", "test123", "user", "13",  "", "852654753"),
-("jolelito", "Joel", "Valdivia Amoros", "joel@gmail.com", "test123", "user", "10",  "", "963357951");
+("admin","admin", "admin@gmail.com", "admin@2023", "admin", "654987123");
 
 /**/
 DROP TABLE IF EXISTS roles;
