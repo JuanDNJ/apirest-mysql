@@ -1,11 +1,11 @@
  const validField = (field, value) => {
     try { // Utilizo try catch para capturar errores
          // si el campo no es un string, enviar error
-        if (typeof value !== "string") return { message: "The field must be a string.", valid: false}    
+        if (typeof value !== "string") return { message: `The field: ${field} must be a string.`, valid: false}    
         // si el campo está vacío, enviar error
-        if (value.length === 0) return { message: "The field cannot be empty.", valid: false }  
+        if (value.length === 0) return { message: `The field: ${field} cannot be empty.`, valid: false }  
         // Si contiene spacios en blanco, enviar error 
-        if (value.match(/\s/g)) return { message: "The field cannot contain spaces." , valid: false}  
+        if (value.match(/\s/g)) return { message: `The field: ${field} cannot contain spaces.` , valid: false}  
         // Utilozo switch para validar el campo (field) que recibo por parametro
         switch (field) {
             // si el campo es email
@@ -49,14 +49,14 @@
                 break;
             // si el campo es user_handler
             case "user_handler": 
-                // si el user handler es mayor a 15 caracteres, enviar error
+                // si el user handler es mayor a 20 caracteres, enviar error
                 if (value.length > 20) {
                     return { 
                         message: "The user handler cannot be longer than 20 characters." , 
                         valid: false
                     }
                 }
-                // si el user handler es menor a 8 caracteres, enviar error
+                // si el user handler es menor a 6 caracteres, enviar error
                 if (value.length < 6) {
                     return { 
                         message: "The user handler cannot be less than 3 characters.", 

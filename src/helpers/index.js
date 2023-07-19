@@ -16,6 +16,7 @@ const handlerHashString = async (string, genSalt) => {
 const handlerCompareHashString = async (string, hash) => {
     try {
         const match = await bcrypt.compare(string, hash);
+        if (!match) throw new Error('Password not match');
         return match;
     } catch (error) {
         throw new Error(error);
