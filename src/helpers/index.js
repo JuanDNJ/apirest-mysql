@@ -25,19 +25,19 @@ const handlerCompareHashString = async (string, hash) => {
 const handlerJwtSign = async (string) => {
     try {
         const jwtSign = jwt.sign(string, hashSecretKey);
-        console.log(jwtSign);
+        if (!jwtSign) throw new Error('Token not signed');
         return jwtSign;
     } catch (error) {
-        throw new Error(error);
+        return error;
     }
 }
 const handlerJwtVerify = async (string) => {
     try {
         const jwtVerify = jwt.verify(string, hashSecretKey);
-        console.log(jwtVerify);
+        if (!jwtVerify) throw new Error('Token not valid');
         return jwtVerify;
     } catch (error) {
-        throw new Error(error);
+        return error
     }
 }
 
