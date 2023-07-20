@@ -24,11 +24,11 @@ CREATE TABLE users (
     create_at timestamp not null default (now()),
     primary key(user_id)
 );
-
+/*
 INSERT INTO users(user_handle, first_name, email, password, role, phone_number)
 VALUES
 ("admin","admin", "admin@gmail.com", "admin@2023", "admin", "654987123");
-
+*/
 /**/
 DROP TABLE IF EXISTS roles;
 
