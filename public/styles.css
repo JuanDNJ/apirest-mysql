@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #223;
+    color: snow;
+}
+a{
+    text-decoration: none;
+    color: snow;
+    font-size: 1.2rem;
+}
+.inicio{
+    padding: 60px 1rem;
+    background: #333;
+}
+ul{
+    list-style: none;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #223;
+    padding: 1rem 2rem;
+}
+footer{
+    background: rgb(48, 48, 82);
+    padding: 1rem 2rem;
+    text-align: center;
+}
