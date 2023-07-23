@@ -112,7 +112,14 @@ CREATE TABLE front_pages(
 );
 INSERT INTO front_pages(title, text, photo_url, bg_color, text_color, title_color) 
 VALUES 
-("Por que adoptar?","Facere at pariatur, repellendus nulla, neque dolorem accusamus debitis quasi nostrum nihil perferendis quae quisquam dolorum corporis cumque temporibus quaerat placeat rerum.","https://firebasestorage.googleapis.com/v0/b/juandfe.appspot.com/o/api%2Fv1%2Fpets%2Fdogs%2Fperros1024x1024.jpg?alt=media&token=e629ebfb-f72a-4d8f-b01c-98a989eb4259","#223","#fff","#fff");
+(
+"Por que adoptar?",
+"Facere at pariatur, repellendus nulla, neque dolorem accusamus debitis quasi nostrum nihil perferendis quae quisquam dolorum corporis cumque temporibus quaerat placeat rerum.",
+"https://firebasestorage.googleapis.com/v0/b/juandfe.appspot.com/o/api%2Fv1%2Fpets%2Fdogs%2Fperros1024x1024.jpg?alt=media&token=e629ebfb-f72a-4d8f-b01c-98a989eb4259",
+"#223",
+"#fff",
+"#fff"
+);
 
 DROP TABLE IF EXISTS categories;
 
@@ -180,3 +187,18 @@ VALUES
     "react.svg",
     "snow",
     "silver");
+
+DROP TABLE IF EXISTS refugios;
+
+CREATE TABLE IF NOT EXISTS  refugios(
+    refugio_id int not null auto_increment,
+    name varchar(50) not null,
+    description varchar(10000) not null,
+    create_at timestamp not null default (now()),
+    primary key(refugio_id)
+);
+
+INSERT INTO refugios(name, description)
+VALUE 
+("Refugio del Vado de Ordiso","El refugio del Vado de Ordiso es un  refugio libre situado a 1610 mts. de altitud, a una hora de camino por pista desde San Nicol\u00e1s de Bujaruelo.\r\n\r\n Est\u00e1 compuesto por dos habit\u00e1culos, ambos con puerta y uno de ellos con chimenea y ventana. \r\n\r\nConsidero que es un refugio para pasar la noche en caso de urgencia, ya que no est\u00e1 muy limpio(pero tampoco est\u00e1 sucio, dej\u00e9moslo en un t\u00e9rmino medio), y en tan s\u00f3lo 1 hora puedes estar perfectamente en el refugio guardado de Bujaruelo.  \r\n\r\nGrandes vistas sobre la cara sur del Vignemale"),
+("Sant Salvador de les Espases","HISTORIA \r\n\r\nLa capilla de San Salvador de las Espadas se encuentra situada en lo alto de un acantilado aislado, el punto de confluencia entre los obispados de Sant Feliu y Vic y los t\u00e9rminos municipales de Esparreguera, Olesa de Montserrat y Vacarisses. Documentada a partir del siglo XIV, era la antigua capilla del Castillo de las Espadas, documentado desde el a\u00f1o 985, y del que s\u00f3lo queda el basamento de una torre circular. \r\n\r\nLigada hist\u00f3ricamente a la poblaci\u00f3n de Esparreguera pertenece al t\u00e9rmino municipal de esta localidad y en la parroquia de Santa Mar\u00ed\u00ada de Olesa desde el 18 de marzo de 1868. \r\n\r\nEl edificio actual corresponde a una reforma del siglo XVI. Tiene una sola nave, de vuelta baja en un principio de ca\u00f1\u00f3n y sin \u00c3\u00a1bside. Fue totalmente restaurada en 1924 gracias a la labor del padre Joan Sol\u00ed , escolapio de Terrassa. Los primeros d\u00ed\u00adas de la guerra civil espa\u00f1ola unos incontrolados quemaron el interior de la capilla, destruyendo su retablo g\u00f3tico, el armonio y los objetos lit\u00fargicos. \r\n\r\nActualmente preside la capilla una imagen del Salvador, obra del artista olesano Amadeu Paltor. En el Museo de Terrassa (castillo cartuja de Vallparad\u00ed\u00ads) se conserva la predela del antiguo retablo. \r\n\r\nEl 22 de abril de 1949 fue declarado Bien Cultural de Inter\u00e9s Nacional (BCIN), protecci\u00f3n publicada en el Bolet\u00ed\u00adn Oficial del Estado (BOE) el 5 de mayo de 1949. \r\n\r\nEn 1970 fue constituida la asociaci\u00f3n Amigos de San Salvador de las Espadas, con sede en la iglesia parroquial de Santa Mar\u00eda de Olesa de Montserrat, vela por su conservaci\u00f3n, organiza anualmente la romer\u00eda el primer domingo de septiembre y abre las puertas de la capilla todos los jueves y domingos. \r\n\r\n\r\nC\u00d3MO LLEGAR? \r\n\r\nNos llegamos en Olesa de Montserrat. Una vez en Olesa tenemos que buscar uno de los dos polideportivos que hay en el pueblo: El Salvador Boada. Es el polideportivo que est\u00e1 en la parte m\u00e1s alta de Olesa. Hay un aparcamiento, dejamos el coche. \r\n\r\n\r\nITINERARIO \r\n\r\nTomamos una pista forestal que sale de detr\u00e1s del polideportivo. Al cabo de unos \r\n50 metros, giramos a la derecha direcci\u00f3n al Pla del Fideuer. (Pal indicador). \r\nSeguimos la pista principal, muy evidente, dejando las pistas forestales que \r\nsalen a ambos lados de la principal. De vez en cuando hay se\u00f1ales amarillas y \r\nverdes. \r\nLlegamos a un mirador - Fuente de la Roureda -, donde podemos contemplar por \r\nprimera vez una magn\u00c3\u00adfica vista del macizo de Montserrat. \r\n\r\nNos olvidamos de la pista que llega al mirador por la izquierda y seguimos la \r\npista que lleva al Plan del Fideuer (poste indicador). \r\nUna vez en el plan del Fideuer - ya llevamos, aproximadamente, una hora caminando \r\n- Si miramos a la izquierda podemos ver una colina con la ermita de San \r\nSalvador y al fondo Montserrat. \r\nEn el Plan Fideuer encontramos postes indicadores del camino hacia San Salvador. \r\nSeguimos unas marcas blancas que se alternan con otras de color \r\nrojo con un c\u00ed\u00adrculo blanco en medio. Llegamos a un collado. Seguimos los \r\nse\u00f1ales y empezamos a bajar hacia un segundo collado. \r\nEn la explanada del segundo collado vamos hacia la izquierda siguiendo las se\u00f1ales. \r\nAl cabo de unos metros, las se\u00f1ales suben arriba por la derecha. Hay que seguir \r\nunos metros, hasta que encontramos a la izquierda un camino con escaleras que ya \r\nlleva directamente a la cima de Sant Salvador de las espadas. \r\nDisfrutamos un rato de la fant\u00e1stica vista de los entornos y sobre todo de \r\nMontserrat y volvemos a Olesa por el mismo camino. \r\n\r\nTIEMPO APROXIMADO DE ASCENSI\u00d3N: una hora y media");
