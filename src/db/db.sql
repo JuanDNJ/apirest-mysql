@@ -93,7 +93,7 @@ CREATE TABLE banners(
 );
 INSERT INTO banners(title, text, color) 
 VALUES 
-("Por que adoptar?","Facere at pariatur, repellendus nulla, neque dolorem accusamus debitis quasi nostrum nihil perferendis quae quisquam dolorum corporis cumque temporibus quaerat placeat rerum.","white"),
+("Por que adoptar?","Adoptar una mascota es una de las mejores cosas que puedes hacer en tu vida. Si adoptas una mascota, no solo le das una nueva oportunidad de vida, sino que también le das una nueva oportunidad a tu vida..","white"),
 ("Beneficios al adoptar","Facere at pariatur, repellendus nulla, neque dolorem accusamus debitis quasi nostrum nihil perferendis quae quisquam dolorum corporis cumque temporibus quaerat placeat rerum.","pink");
 
 
@@ -113,8 +113,8 @@ CREATE TABLE front_pages(
 INSERT INTO front_pages(title, text, photo_url, bg_color, text_color, title_color) 
 VALUES 
 (
-"Por que adoptar?",
-"Facere at pariatur, repellendus nulla, neque dolorem accusamus debitis quasi nostrum nihil perferendis quae quisquam dolorum corporis cumque temporibus quaerat placeat rerum.",
+"Presentamos a tus nuevos amigos",
+"Ayúdanos a mejorar la vida de estos pequeños amigos, que necesitan de tu ayuda, para poder tener una vida mejor.",
 "https://firebasestorage.googleapis.com/v0/b/juandfe.appspot.com/o/api%2Fv1%2Fpets%2Fdogs%2Fperros1024x1024.jpg?alt=media&token=e629ebfb-f72a-4d8f-b01c-98a989eb4259",
 "#223",
 "#fff",
@@ -136,9 +136,9 @@ VALUES
 ("Dogs"),
 ("Cats"),
 ("Birds"),
-("Reptils"),
+("Reptiles"),
 ("Rodents"),
-("Fishs");
+("Fish");
 
 DROP TABLE IF EXISTS articles;
 
