@@ -5,8 +5,7 @@ export const pets = {
     // método para obtener todas las mascotas
     getAll: async (req, res) => {
         try { // intentar ejecutar consulta
-            const poolQuery = "SELECT * FROM pets" // crear consulta
-            const [pets] = await pool.query(poolQuery); // ejecutar consulta
+            const [pets] = await pool.query("SELECT * FROM pets" ); // ejecutar consulta
             if(pets.length === 0) return res.status(404).json({error: "No registered pets"}) // validar si hay mascotas registradas
             return res.status(200).json(pets) // enviar mascotas
         } catch (error) {
@@ -17,8 +16,7 @@ export const pets = {
     search: async (req, res) => {
         try{ // intentar ejecutar consulta
             const {search} = req.params // obtener parámetro de búsqueda
-            const poolQuery = `SELECT * FROM pets WHERE name LIKE '%${search}%'` // crear consulta
-            const [pets] = await pool.query(poolQuery) // ejecutar consulta 
+            const [pets] = await pool.query(`SELECT * FROM pets WHERE name LIKE '%${search}%'`) // ejecutar consulta 
             if(pets.length === 0) return res.status(404).json({error: "No registered pets"}) // validar si hay mascotas registradas
             return res.status(200).json(pets) // enviar mascotas
         }catch(err) {
@@ -28,8 +26,7 @@ export const pets = {
     get: async (req, res) => {
         try {
             const {id} = req.params
-            const poolQuery = `SELECT * FROM pets WHERE pet_id = ${id}`
-            const [pet] = await pool.query(poolQuery)
+            const [pet] = await pool.query(`SELECT * FROM pets WHERE pet_id = ${id}`)
             if(pet.length === 0) return res.status(404).json({error: "Pet not found"})
             return res.status(200).json(pet[0])
         } catch (error) {

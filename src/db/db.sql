@@ -133,6 +133,7 @@ CREATE TABLE categories(
 );
 INSERT INTO categories(name) 
 VALUES 
+("All"),
 ("Dogs"),
 ("Cats"),
 ("Birds"),
