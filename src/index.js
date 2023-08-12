@@ -25,6 +25,7 @@ import frontPageRouter from "./routes/front-page.routes.js";
 import articlesRouter from "./routes/articles.routes.js";
 import configRouter from "./routes/config.routes.js";
 import categoriesRouter from "./routes/categories.routes.js";
+import documentsPets from "./routes/documents-pets.routes.js";
 import authorizationRouter from "./routes/authorization.routes.js";
 import apiRouter from "./routes/api.routes.js";
 import { page404, page500 } from "./midlewares/index.js"
@@ -39,6 +40,7 @@ app.use(frontPageRouter) // use frontPageRouter
 app.use(articlesRouter) // use articlesRouter
 app.use(configRouter) // use configRouter 
 app.use(categoriesRouter) // use categoriesRouter
+app.use(documentsPets) // use documentsPets
 app.use(authorizationRouter) // use authorizationRouter
 app.use("/api", apiRouter)
 
