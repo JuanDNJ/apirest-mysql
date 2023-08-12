@@ -43,21 +43,24 @@ pool.getConnection(async (err, connection) => {
   await pool.query('DROP TABLE IF EXISTS users')
 
   await pool.query(`CREATE TABLE IF NOT EXISTS users (
-	user_id int not null auto_increment,
-    user_handle varchar(20) not null unique,
-    first_name varchar(50) null,
-    last_name varchar(100) null,
-    email varchar(50) not null unique,
-    password varchar(500) null,
-    role char(20) not null default('user'),
-    is_active boolean not null default true,
-    age int(3) null default(null),
-    address varchar(255) null,
-    photo_url varchar(500) not null default('http://localhost:5174/juan-perfil32x32.jpg'),
-    phone_number char(12) unique,
-    create_at timestamp not null default (now()),
-    primary key(user_id)
-)`)
+    user_id int NOT NULL AUTO_INCREMENT,
+    user_handle varchar(20) NOT NULL,
+    first_name varchar(50) DEFAULT NULL,
+    last_name varchar(100) DEFAULT NULL,
+    email varchar(50) NOT NULL,
+    password varchar(500) DEFAULT NULL,
+    role char(20) NOT NULL DEFAULT 'user',
+    is_active tinyint(1) NOT NULL DEFAULT '1',
+    age int DEFAULT 0,
+    address varchar(255) DEFAULT NULL,
+    photo_url varchar(500) NOT NULL DEFAULT 'http://localhost:5174/juan-perfil32x32.jpg',
+    phone_number char(12) DEFAULT NULL,
+    create_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (user_id),
+    UNIQUE KEY user_handle (user_handle),
+    UNIQUE KEY email (email),
+    UNIQUE KEY phone_number (phone_number)
+  ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;`)
 
 const {user_handle, first_name, last_name, email, password, role, is_Active, age, address, photo_url, phone_number} = admin;
 
