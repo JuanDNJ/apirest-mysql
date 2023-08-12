@@ -103,6 +103,7 @@ CREATE TABLE front_pages(
 	front_id int not null auto_increment,
     title varchar(50) not null,
     text varchar(255) not null,
+	active boolean not null,
     photo_url varchar(255) null,
     bg_color char(20) null,
     text_color char(10) null,
@@ -110,11 +111,12 @@ CREATE TABLE front_pages(
 	create_at timestamp not null default (now()),
     primary key(front_id)
 );
-INSERT INTO front_pages(title, text, photo_url, bg_color, text_color, title_color) 
+INSERT INTO front_pages(title, text, active, photo_url, bg_color, text_color, title_color) 
 VALUES 
 (
 "Presentamos a tus nuevos amigos",
 "Ayúdanos a mejorar la vida de estos pequeños amigos, que necesitan de tu ayuda, para poder tener una vida mejor.",
+true,
 "https://firebasestorage.googleapis.com/v0/b/juandfe.appspot.com/o/api%2Fv1%2Fpets%2Fdogs%2Fperros1024x1024.jpg?alt=media&token=e629ebfb-f72a-4d8f-b01c-98a989eb4259",
 "#223",
 "#fff",
