@@ -1,9 +1,9 @@
 import pool from "../db/pool.js"
-const poolQuery = "SELECT * FROM articles"
+
 export const articles = {
     all: async (req, res) => {
         try {
-            const [articles] = await pool.query(poolQuery);
+            const [articles] = await pool.query("SELECT * FROM articles");
             if (articles.length === 0) return res.status(404).json({ error: "No registered articles" })
             return res.status(200).json(articles)
         } catch (err) {

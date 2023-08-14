@@ -1,11 +1,8 @@
 import {PORT_SERVER} from "./config/index.js" // importar puerto desde config/index.js
-import path from "path" // importar path
 import express from "express" // importar express 
 import cors from "cors" // importar cors
-import pug from "pug" // importar pug
+
 const app = express() // inicializar express
-
-
 
 app.use(cors()) //  habilitar CORS .
 app.use(express.json()) // habilitar application/json
@@ -28,6 +25,7 @@ import categoriesRouter from "./routes/categories.routes.js";
 import documentsPets from "./routes/documents-pets.routes.js";
 import authorizationRouter from "./routes/authorization.routes.js";
 import apiRouter from "./routes/api.routes.js";
+import guiaTelefonicaRouter from './routes/guia-telefonica/contactos.routes.js'
 import { page404, page500 } from "./midlewares/index.js"
 
 // use routes
@@ -43,7 +41,7 @@ app.use(categoriesRouter) // use categoriesRouter
 app.use(documentsPets) // use documentsPets
 app.use(authorizationRouter) // use authorizationRouter
 app.use("/api", apiRouter)
-
+app.use("/api/guia-telefonica", guiaTelefonicaRouter)
 // Error 404
 app.use(page404) // use page404 (midleware para manejar errores 404)
 
