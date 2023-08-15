@@ -17,6 +17,8 @@
 - DB_PORT="9500"
 
 ## Create database MySql
-- src/db/mascotas.sql
- - Copy or import the code, from the database.sql file, and paste it into your preferred App, which accepts the .sql extension.
+- src/db
+- DATA_BASE mascotas.sql
+- DATA_BASE guia-telefonica.sql
+- Copy or import the code, from the database.sql file, and paste it into your preferred App, which accepts the .sql extension.
 
