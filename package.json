@@ -30,6 +30,8 @@
     "extends": "standard"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
     "nodemon": "^3.0.1"
   }
 }

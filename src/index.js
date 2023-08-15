@@ -41,7 +41,7 @@ app.use(categoriesRouter) // use categoriesRouter
 app.use(documentsPets) // use documentsPets
 app.use(authorizationRouter) // use authorizationRouter
 app.use("/api", apiRouter)
-app.use("/api/guia-telefonica", guiaTelefonicaRouter)
+app.use("/guia-telefonica", guiaTelefonicaRouter)
 // Error 404
 app.use(page404) // use page404 (midleware para manejar errores 404)
 
