@@ -13,7 +13,7 @@
 - DB_HOST="localhost"
 - DB_USER="username"
 - DB_PASSWORD="password"
-- DB_NAME="mascotas"
+- DB_NAME="mascotas or guia-telefonica, etc ..."
 - DB_PORT="9500"
 
 ## Create database MySql
