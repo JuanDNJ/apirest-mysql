@@ -1,6 +1,6 @@
 import { Router } from "express"
-import { validate } from "../controllers/validate.controller.js"
-import pool from "../db/pool.js"
+import { validate } from "../../controllers/validate.controller.js"
+import pool from "../../db/pool.js"
 
 
 const router = Router()

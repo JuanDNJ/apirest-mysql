@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "description": "",
-  "main": "src/index.js",
+  "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/index.js rs",
     "test": "echo \"Error: no test specified\" && exit 1"

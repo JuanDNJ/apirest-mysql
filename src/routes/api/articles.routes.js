@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { articles } from "../controllers/articles.ctr.js";
+import { articles } from "../../controllers/articles.ctr.js";
 
 const router = Router();
 

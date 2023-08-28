@@ -1,5 +1,5 @@
 import { Router } from "express"; // importar express
-import pool from "../db/pool.js" // importar pool de conexión a la base de datos
+import pool from "../../db/pool.js" // importar pool de conexión a la base de datos
 
 const router = Router(); // inicializar router
 
@@ -18,8 +18,15 @@ router.get('/about', async (req, res) => { // ruta inicial
     res.render("pages/about", data)
 
 })
+router.get('/contact', async (req, res) => { // ruta inicial
+    const data = {
+        title: "Conatct"
+    }
+    res.render("pages/contact", data)
+
+})
 router.get('/db-ping', async (req, res) => { // ruta para probar la conexión a la base de datos
-    const [ping] = await pool.query("SELECT 'pong' AS ping");
+    const [ping] = await pool.query("SELECT 'PingPong' AS ping");
     res.json({ message: ping[0] })
 })
 
