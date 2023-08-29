@@ -26,7 +26,7 @@ router.use("/users", usersRouter) // use usersRouter
 router.use("/pets", petsRouter) // use petsRouter
 router.use("/refugios", refugiosRouter) // use refugiosRouter
 router.use("/banners", bannersRoutes) // use bannersRoutes
-router.use("/fron-pages", frontPageRouter) // use frontPageRouter
+router.use("/front-pages", frontPageRouter) // use frontPageRouter
 router.use("/articles", articlesRouter) // use articlesRouter
 router.use("/config", configRouter) // use configRouter 
 router.use("/categories", categoriesRouter) // use categoriesRouter
