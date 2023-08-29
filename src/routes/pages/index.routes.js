@@ -6,7 +6,7 @@ const router = Router(); // inicializar router
 
 router.get('/', async (req, res) => { // ruta inicial
     const data = {
-        title: "Bienvenido, a esta API MySql"
+        title: "Bienvenido!"
     }
     res.render("pages/index", data)
 

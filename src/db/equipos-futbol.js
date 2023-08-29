@@ -1,12 +1,11 @@
 import { createPool } from "mysql2/promise";
 import { DB_HOST, DB_USER, DB_PASSWORD, DB_PORT } from "../config/index.js"
 
-
-const guiaTelefonica = createPool({
+const equiposFutbol = createPool({
     host: DB_HOST,
     user: DB_USER,
     password: DB_PASSWORD,
-    database: 'guia_telefonica',
+    database: 'equipos_futbol',
     port: DB_PORT,
     waitForConnections: true,
     connectionLimit: 10,
@@ -17,7 +16,7 @@ const guiaTelefonica = createPool({
     keepAliveInitialDelay: 0
 })
 
-guiaTelefonica.getConnection(async (err, connection) => {
+equiposFutbol.getConnection(async (err, connection) => {
     if (err) {
       if (err.code === 'PROTOCOL_CONNECTION_LOST') {
         console.error('Database connection was closed.')
@@ -32,4 +31,4 @@ guiaTelefonica.getConnection(async (err, connection) => {
     }
   });
   
-  export default guiaTelefonica
+  export default equiposFutbol

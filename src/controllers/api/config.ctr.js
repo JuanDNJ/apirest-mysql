@@ -1,4 +1,8 @@
-import pool from '../db/pool.js';
+import {db} from "../../db/index.js"
+
+const pool = await db('mascotas')
+if(!pool) throw new Error("No hay conexion con la base de datos")
+
 export const config = {
     all: async (req, res) => {
         try {

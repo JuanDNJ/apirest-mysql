@@ -1,5 +1,10 @@
-import pool from "../db/pool.js" // importar pool de conexión a la base de datos
-import { handlerJwtVerify } from "../helpers/index.js"; // importar función para verificar token
+// import pool from "../db/pool.js" // importar pool de conexión a la base de datos
+import {db} from "../../db/index.js"
+import { handlerJwtVerify } from "../../helpers/index.js"; // importar función para verificar token
+
+const pool = await db('mascotas')
+if(!pool) throw new Error("No hay conexion con la base de datos")
+
 // exportar objeto con los métodos de la API
 export const users = {
     getAll: async (req, res) => {
