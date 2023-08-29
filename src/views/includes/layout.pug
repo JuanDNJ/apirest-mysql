@@ -2,11 +2,16 @@ doctype html
 html(lang='es')
   include head.pug
   body
-    header#header
-     nav
-       a(href='/') Home
-       a(href='/about') About
-       a(href='/contact') Contact
-    block content
-    include foot.pug
-    script(src='./js/index.mjs' defer type="module")
+    main#app
+      header.header
+        section.logo 
+          img(src="/images/logo.svg" alt="Logo" width="32")
+          h1.main__title API MySQL
+        nav
+          a(href='/') Home
+          a(href='/about') About
+          a(href='/contact') Contact
+      section.content
+        block content
+      include foot.pug
+      script(src='./main.js' defer type="module")

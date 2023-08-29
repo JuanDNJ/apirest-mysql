@@ -6,7 +6,7 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon src/index.js rs",
+    "dev": "nodemon -e js,pug,css,mjs,cjs,josn,ts src/server.js rs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
