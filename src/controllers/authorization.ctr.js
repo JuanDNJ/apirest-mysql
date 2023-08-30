@@ -1,6 +1,8 @@
-import pool from "../db/pool.js"
-import bcrypt from "bcrypt"
+import { db } from "../db/index.js"
 import { validField, handlerHashString, handlerCompareHashString, handlerJwtSign } from "../helpers/index.js"
+
+const pool = await db('mascotas')
+if(!pool) throw new Error("No hay conexion con la base de datos")
 
 export const authorization = {
     // Methods
@@ -85,4 +87,5 @@ export const authorization = {
             return res.status(500).json({ error: error.message, status: 500 }) // enviar error
         }
     }
+    
 }
