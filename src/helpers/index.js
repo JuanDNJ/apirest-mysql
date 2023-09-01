@@ -40,11 +40,20 @@ const handlerJwtVerify = async (string) => {
         return error
     }
 }
-
+const handlerDataSrtringToArray = (string) => {
+    let data
+    if(string && string.length){
+        data = string.split(",")
+        // console.log(telefonos.map(tel => tel.trim()))
+        data = data.map(tel => tel.trim())
+    }
+    return data
+}
 export {
     validField,
     handlerHashString,
     handlerCompareHashString,
     handlerJwtSign,
     handlerJwtVerify,
+    handlerDataSrtringToArray
 }
