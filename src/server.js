@@ -8,11 +8,13 @@ import apiRouter from "./routes/api/api.routes.js";
 import guiaTelefonicaRouter from './routes/guia-telefonica/guia.routes.js'
 import equiposFutbolRouter from "./routes/equipos-futbol/equipos.routes.js";
 
+
 // use routes
 app.use(homeRouter) // use homeRouter
 app.use("/api", apiRouter)
 app.use("/guia-telefonica", guiaTelefonicaRouter)
 app.use("/equipos-futbol", equiposFutbolRouter)
+
 // Error 404
 app.use(page404) // use page404 (midleware para manejar errores 404)
 

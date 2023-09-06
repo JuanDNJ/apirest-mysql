@@ -8,7 +8,7 @@ import articlesRouter from "./articles.routes.js";
 import configRouter from "./config.routes.js";
 import categoriesRouter from "./categories.routes.js";
 import documentsPets from "./documents-pets.routes.js";
-import authorizationRouter from "./authorization.routes.js";
+import authorizationRouter from "../authorization.routes.js";
 
 const router = Router()
 

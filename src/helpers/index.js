@@ -1,12 +1,13 @@
 import validField from "./validate-field.helper.js";
+import emitError from "./emit-error.js";
 import bcrypt from "bcrypt";
+import crypto from "crypto";
 import jwt from "jsonwebtoken";
 import { hashSecretKey } from "../config/index.js";
 
-const handlerHashString = async (string, genSalt) => {
+const handlerHashString = async (string) => {
     try {
-        if (typeof genSalt !== 'number') throw new Error('genSalt must be a number');
-        const salt = await bcrypt.genSalt(genSalt ?? 10);
+        const salt = await bcrypt.genSalt(10);
         const hash = await bcrypt.hash(string, salt);
         return hash;
     } catch (error) {
@@ -16,10 +17,16 @@ const handlerHashString = async (string, genSalt) => {
 const handlerCompareHashString = async (string, hash) => {
     try {
         const match = await bcrypt.compare(string, hash);
-        if (!match) throw new Error('Password not match');
         return match;
     } catch (error) {
         throw new Error(error);
+    }
+}
+const handlerJwtPayload = (payload) => {
+    return {
+        iat: Math.floor(Date.now() / 1000) - 30,
+        exp: Math.floor(Date.now() / 1000) + (60 * 60),
+        sub: payload
     }
 }
 const handlerJwtSign = async (string) => {
@@ -42,18 +49,25 @@ const handlerJwtVerify = async (string) => {
 }
 const handlerDataSrtringToArray = (string) => {
     let data
-    if(string && string.length){
+    if (string && string.length) {
         data = string.split(",")
         // console.log(telefonos.map(tel => tel.trim()))
         data = data.map(tel => tel.trim())
     }
     return data
 }
+
+const newUID = () => crypto.randomUUID()
+
+
 export {
     validField,
     handlerHashString,
     handlerCompareHashString,
     handlerJwtSign,
+    handlerJwtPayload,
     handlerJwtVerify,
-    handlerDataSrtringToArray
+    handlerDataSrtringToArray,
+    newUID,
+    emitError
 }

@@ -1,5 +1,6 @@
 import { createPool } from "mysql2/promise";
 import { DB_HOST, DB_USER, DB_PASSWORD, DB_PORT } from "../config/index.js"
+import { newUID, handlerHashString, handlerJwtSign, handlerJwtPayload} from "../helpers/index.js";
 
 
 const db = (dbName) => {
@@ -17,6 +18,7 @@ const db = (dbName) => {
         enableKeepAlive: true,
         keepAliveInitialDelay: 0
     })
+   
     return pool.getConnection( (err, connection) => {
         if (err) {
             if (err.code === 'PROTOCOL_CONNECTION_LOST') {
@@ -31,6 +33,22 @@ const db = (dbName) => {
             console.log(connection)
         }
     });
+}
+
+const api = await db("api");
+const query = await api.query("SELECT COUNT(email) AS emails FROM account")
+const first_Account = query[0];
+
+if(first_Account[0].emails === 0){
+    const id = newUID();
+    const adminApi = { 
+        id: id,
+        name:"admin",
+        password: await handlerHashString("Admin@2023"),
+        email: "admin@admin.adm",
+        token: await handlerJwtSign(handlerJwtPayload({rol:"admin", name: "admin", email: "admin@admin.adm"}))
+    }
+    const insert = await api.query(`INSERT INTO account (id, name, password, email, token) VALUES ('${adminApi.id}','${adminApi.name}','${adminApi.password}','${adminApi.email}','${adminApi.token}')`)
 }
 
 export {
