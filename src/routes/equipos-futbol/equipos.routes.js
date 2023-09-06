@@ -6,7 +6,7 @@ const equiposFutbolRouter = Router()
 
 
 equiposFutbolRouter.get("/", equipos.get.all)
-equiposFutbolRouter.get("/get-club/:name", accountVerified,
+equiposFutbolRouter.get("/get-club/:name",
     async (req, res) => {
      
         res.status(200).json({

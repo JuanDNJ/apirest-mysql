@@ -9,7 +9,7 @@
     "dev": "nodemon -e js,pug,css,mjs,cjs,josn,ts src/server.js rs"
   },
   "keywords": [],
-  "author": "",
+  "author": "Juan Valdiviva",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
