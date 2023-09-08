@@ -16,9 +16,15 @@ export const accountVerified = async (req, res, next) => {
         // error.stack = "401"
         // error.name = "Authorization Token"
         if(!token) throw error
+        console.log(token)
         const verified = await handlerJwtVerify(token.split(" ")[1])
-        if (verified.name === 'JsonWebTokenError') return res.status(401).send('Unautorized')
-        req.account = verified
+        console.log(verified)
+        if (verified.name === 'JsonWebTokenError') return res.status(401).send('Unautorized ' + verified.name)
+        req.account = {
+            ...verified,
+            token: token.split(" ")[1]
+        }
+        console.log(req.account)
         next()
     } catch (error) {
         res.json({

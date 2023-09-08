@@ -36,7 +36,36 @@ export const pets = {
             return res.status(500).json({error: error.message})
         }
     },
-    // Metodo para filtrar mascotas por categorias
+    documents: async (req, res) => {
+        try {
+            const [docsPets] = await pool.query("SELECT * FROM docs_pets");
+            if (docsPets.length === 0) return res.status(404).json({ error: "No registered documents pets" })
+            return res.status(200).json(docsPets)
+        } catch (error) {
+            return res.status(500).json({ error: error.message })
+        }
+    },
+    getDocPet: async (req, res) => {
+        try {
+            const { doc } = req.params
+            const [docPet] = await pool.query(`SELECT * FROM docs_pets WHERE pet_id = ${doc}`)
+            if (docPet.length === 0) return res.status(404).json({ error: "Document pet not found" })
+            return res.status(200).json(docPet[0])
+        } catch (error) {
+            return res.status(500).json({ error: error.message })
+        }
+    },
+    categories: async (req, res) => {
+        try {
+            const [categories] = await pool.query(`SELECT * FROM categories`)
+            if(categories.length === 0) return res.status(404).json({error: "Pet not found"})
+            return res.status(200).json(categories)
+        } catch (error) {
+            return res.status(500).json({error: error.message})
+        }
+
+    },
+    //todo para filtrar mascotas por categorias
     filter: async (req, res) => {
         try {
             const {category} = req.params

@@ -17,7 +17,18 @@ router.get('/profile', accountVerified, async (req, res) => { // ruta inicial
    
     res.status(200).json({
         url: 'http://localhost:5174/profile',
-        account: req.account
+        account: {
+            ...req.account.sub,
+            token: req.account.token
+        }
+    })
+
+})
+router.get('/profile/view-token/:token', accountVerified, async (req, res) => { // ruta inicial
+   
+    res.status(200).json({
+        url: 'http://localhost:5174/profile/view-token',
+        account: req.account.sub
     })
 
 })

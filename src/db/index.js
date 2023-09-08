@@ -43,12 +43,16 @@ if(first_Account[0].emails === 0){
     const id = newUID();
     const adminApi = { 
         id: id,
-        name:"admin",
+        name:"Juan Antonio",
         password: await handlerHashString("Admin@2023"),
-        email: "admin@admin.adm",
-        token: await handlerJwtSign(handlerJwtPayload({rol:"admin", name: "admin", email: "admin@admin.adm"}))
+        email: "juandevnjv@gmail.com", 
     }
-    const insert = await api.query(`INSERT INTO account (id, name, password, email, token) VALUES ('${adminApi.id}','${adminApi.name}','${adminApi.password}','${adminApi.email}','${adminApi.token}')`)
+    const token = await handlerJwtSign(handlerJwtPayload({id: id, rol:"admin", name: adminApi.name, email: adminApi.email}))
+    console.log(adminApi, token)
+    const insert = await api.query(`
+        INSERT INTO account (id, name, password, email, token)
+        VALUES ('${adminApi.id}','${adminApi.name}','${adminApi.password}','${adminApi.email}','${token}')
+    `)
 }
 
 export {

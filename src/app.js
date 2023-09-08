@@ -1,4 +1,4 @@
-import {PORT_SERVER} from "./config/index.js" // importar puerto desde config/index.js
+import { PORT_SERVER } from "./config/index.js" // importar puerto desde config/index.js
 import express from "express" // importar express 
 import cors from "cors" // importar cors
 

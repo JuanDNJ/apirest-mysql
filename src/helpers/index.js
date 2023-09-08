@@ -3,7 +3,7 @@ import emitError from "./emit-error.js";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
-import { hashSecretKey } from "../config/index.js";
+import { HASH_SECRET_KEY, IAT, EXP, EXP_USER} from "../config/index.js";
 
 const handlerHashString = async (string) => {
     try {
@@ -23,15 +23,25 @@ const handlerCompareHashString = async (string, hash) => {
     }
 }
 const handlerJwtPayload = (payload) => {
-    return {
-        iat: Math.floor(Date.now() / 1000) - 30,
-        exp: Math.floor(Date.now() / 1000) + (60 * 60),
-        sub: payload
+    const options = { iat: IAT, sub: payload};
+    if(payload.rol === 'admin'){
+        return  {
+            iat: IAT, 
+            exp: EXP,
+            sub: payload
+        }
+    }else{
+        return  {
+            iat: IAT, 
+            exp: EXP_USER,
+            sub: payload
+        }
     }
+   
 }
 const handlerJwtSign = async (string) => {
     try {
-        const jwtSign = jwt.sign(string, hashSecretKey);
+        const jwtSign = jwt.sign(string, HASH_SECRET_KEY);
         if (!jwtSign) throw new Error('Token not signed');
         return jwtSign;
     } catch (error) {
@@ -40,7 +50,7 @@ const handlerJwtSign = async (string) => {
 }
 const handlerJwtVerify = async (string) => {
     try {
-        const jwtVerify = jwt.verify(string, hashSecretKey);
+        const jwtVerify = jwt.verify(string, HASH_SECRET_KEY);
         if (!jwtVerify) throw new Error('Token not valid');
         return jwtVerify;
     } catch (error) {
