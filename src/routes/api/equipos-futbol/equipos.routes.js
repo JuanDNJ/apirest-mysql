@@ -1,7 +1,6 @@
 import Router from "express"
-import equipos from "../../controllers/equipos-futbol/equipos.ctr.js"
-import { handlerJwtVerify } from "../../helpers/index.js"
-import { accountVerified } from "../../midlewares/index.js"
+import equipos from "../../../controllers/equipos-futbol/equipos.ctr.js"
+
 const equiposFutbolRouter = Router()
 
 

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { guia } from "../../controllers/guia-telefonica/guia.ctr.js";
+import { guia } from "../../../controllers/guia-telefonica/guia.ctr.js";
 
 const router = Router();
 

@@ -6,8 +6,9 @@ import bannersRoutes from "./banners.routes.js";
 import frontPageRouter from "./front-page.routes.js";
 import articlesRouter from "./articles.routes.js";
 import configRouter from "./config.routes.js";
+import guiaTelefonicaRouter from "./guia-telefonica/guia.routes.js"
 import authorizationRouter from "../authorization.routes.js";
-
+import equiposFutbolRouter from "./equipos-futbol/equipos.routes.js";
 import { accountVerified } from "../../midlewares/index.js";
 const router = Router()
 
@@ -26,6 +27,8 @@ router.use("/refugios", refugiosRouter) // use refugiosRouter
 router.use("/banners", bannersRoutes) // use bannersRoutes
 router.use("/front-pages", frontPageRouter) // use frontPageRouter
 router.use("/pets/", petsRouter) // use petsRouter
+router.use("/guia-telefonica", guiaTelefonicaRouter) // use usersRouter
+router.use("/equipos-futbol", equiposFutbolRouter)
 router.use(accountVerified)
 router.use("/users", usersRouter) // use usersRouter
 router.use("/config", configRouter) // use configRouter 
