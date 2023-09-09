@@ -10,7 +10,6 @@ import apiRouter from "./routes/api/api.routes.js";
 app.use(homeRouter) // use homeRouter
 app.use("/api", apiRouter)
 
-
 // Error 404
 app.use(page404) // use page404 (midleware para manejar errores 404)
 

@@ -3,5 +3,5 @@ import { users } from "../../controllers/api/users.ctr.js"; // importar objeto c
 const router = Router(); // inicializar router
 
 router.get('/', users.getAll)
-router.get('/user/profile', users.getProfile)
+router.get('/user/:id', users.getUser)
 export default router; // exportar router

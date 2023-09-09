@@ -1,4 +1,4 @@
-import { handlerJwtVerify, emitError} from "../helpers/index.js"
+import { handlerJwtVerify, emitError } from "../helpers/index.js"
 export const page404 = (req, res, next) => {
     return res.status(404).json({ error: "Page Not found" })
 }
@@ -10,25 +10,27 @@ export const page500 = (err, req, res, next) => {
 
 export const accountVerified = async (req, res, next) => {
     try {
-        const token = req.headers["authorization"]
-        const error = emitError({name: "authorization", message: 'Not authorized'})
-        // error.message = "No autorizado"
-        // error.stack = "401"
-        // error.name = "Authorization Token"
-        if(!token) throw error
-      
-        const verified = await handlerJwtVerify(token.split(" ")[1])
-      
-        if (verified.name === 'JsonWebTokenError') return res.status(401).send('Unautorized ' + verified.name)
-        req.account = {
-            ...verified,
-            token: token.split(" ")[1]
-        }
-
+        const isToken = await handlerJwtVerify(req.token)
+        if (isToken.name === 'JsonWebTokenError') return res.status(401).send({message: 'Unautorized '})
+        req.isVerified = Boolean(isToken)
+        req.account = isToken.sub 
         next()
     } catch (error) {
         res.json({
             error
         })
+    }
+}
+export const getToken = async (req, res, next) => {
+    try {
+        const query = req.query
+        const authorization = req.headers["authorization"]
+        const token  = query.token || authorization.split(" ")[1]
+        if(!token) throw new Error(`Not autorized¡`)
+        req.token = token
+        
+        next()
+    } catch (error) {
+        throw new Error(error)
     }
 }
