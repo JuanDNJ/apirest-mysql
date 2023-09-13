@@ -1,8 +1,5 @@
 import { db } from "../db/index.js"
 import { validField, handlerHashString, handlerCompareHashString, handlerJwtSign } from "../helpers/index.js"
-import AuthorizationMod from "../models/mysql/authorization.mod.js"
-const pool = await db('api')
-if (!pool) throw new Error("No hay conexion con la base de datos")
 export class AuthorizationCtr {
     constructor(model) {
         this.model = model
@@ -37,6 +34,8 @@ export class AuthorizationCtr {
     }
     signup = async (req, res) => {
         try {
+            const pool = await db('api')
+            if (!pool) throw new Error("No hay conexion con la base de datos")
             const { user_handler, email, password } = req.body; // obtener datos de la petición
             const validEmail = validField("email", email)
             const validPassword = validField("password", password)
@@ -137,7 +136,7 @@ export class AuthorizationCtr {
 //             const hashPassword = await handlerHashString(password, 10)
 //             // si el usuario no existe, agregarlo a la base de datos
 //             const poolQueryAddUser = await pool.query(`
-//                 INSERT INTO users(user_handle, email, password) 
+//                 INSERT INTO users(user_handle, email, password)
 //                 VALUES ('${user_handler}','${email}','${hashPassword}')`)
 
 //             if (!poolQueryAddUser.length) return res.status(400).json({ message: "Could not save new user!", status: 400 }) // si no se pudo agregar el usuario, enviar error
