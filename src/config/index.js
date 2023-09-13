@@ -1,5 +1,4 @@
-import {config}  from "dotenv"
-config()
+import "dotenv/config"
 
 export const PORT_SERVER = process.env.PORT_SERVER ?? 3000;
 export const DB_PORT = process.env.DB_PORT ?? 9500;
