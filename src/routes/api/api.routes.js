@@ -7,8 +7,8 @@ import frontPageRouter from "./front-page.routes.js";
 import articlesRouter from "./articles.routes.js";
 import configRouter from "./config.routes.js";
 import guiaTelefonicaRouter from "./guia-telefonica/guia.routes.js"
-import authorizationRouter from "../authorization.routes.js";
 import equiposFutbolRouter from "./equipos-futbol/equipos.routes.js";
+import routerProfile from "./account.routes.js";
 import { accountVerified, getToken } from "../../midlewares/index.js";
 const router = Router()
 
@@ -22,16 +22,16 @@ router.get("/", (req,res) => {
     })
 })
 router.use("/articles", articlesRouter) // use articlesRouter
-router.use("/authorization", authorizationRouter) // use authorizationRouter
 router.use("/refugios", refugiosRouter) // use refugiosRouter
 router.use("/banners", bannersRoutes) // use bannersRoutes
 router.use("/front-pages", frontPageRouter) // use frontPageRouter
 router.use("/pets/", petsRouter) // use petsRouter
 router.use("/guia-telefonica", guiaTelefonicaRouter) // use usersRouter
 router.use("/equipos-futbol", equiposFutbolRouter)
-router.use(getToken)
-router.use(accountVerified)
+// Private routes
+router.use(getToken,accountVerified) // Midlewares autentificate
 router.use("/users", usersRouter) // use usersRouter
+router.use("/profile", routerProfile)
 router.use("/config", configRouter) // use configRouter 
 
 export default router
