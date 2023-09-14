@@ -69,6 +69,10 @@ const handlerDataSrtringToArray = (string) => {
 
 const newUID = () => crypto.randomUUID()
 
+const isString = (param) => {
+    if(typeof param !== "string" ) return false
+    return true
+}
 
 export {
     validField,
@@ -79,5 +83,6 @@ export {
     handlerJwtVerify,
     handlerDataSrtringToArray,
     newUID,
-    emitError
+    emitError,
+    isString
 }

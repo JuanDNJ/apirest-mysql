@@ -1,10 +1,40 @@
 import { db } from "../db/index.js"
+import { validationResult, matchedData } from "express-validator"
 import { validField, handlerHashString, handlerCompareHashString, handlerJwtSign } from "../helpers/index.js"
 export class AuthorizationCtr {
+
     constructor(model) {
         this.model = model
     }
+    getAccount = async (req, res) => {
+        try {
+            const result = validationResult(req)
 
+            if (result.isEmpty()) {
+                const data = matchedData(req)
+                const dbRecord = await this.model.getAccount(data.email)
+                if (!dbRecord) return res.status(401).json({ message: 'No autorizado' })
+                if (dbRecord && !await handlerCompareHashString(data.password, dbRecord.password)) return res.status(401).json({ message: 'No autorizado' })
+                const account = {
+                    id: dbRecord.id,
+                    name: dbRecord.name,
+                    email: dbRecord.email,
+                    token: dbRecord.token,
+                    data_account: dbRecord.data_account
+                }
+                return res.status(200).json(account)
+            }
+            res.status(401).json({
+                errors: result.array()
+            })
+        } catch (error) {
+            return res.status(500).json({
+                exist: false,
+                error,
+                message: error.message
+            })
+        }
+    }
     signin = async (req, res) => {
         try {
             const { email, password } = req.body

@@ -15,4 +15,13 @@ export default class AuthorizationMod {
             throw new Error(error.message)
         }
     }
+    getAccount = async (email) => {
+        try {
+            const [account] = await pool.query(`SELECT * FROM account WHERE email = ?;`, [email])
+            return account[0]
+        } catch (e) {
+            throw new Error(e.message)
+        }
+
+    }
 }
