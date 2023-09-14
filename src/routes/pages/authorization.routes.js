@@ -8,7 +8,11 @@ const createRouter = (authMod) => {
     
     router.post('/signin', authCtr.signin);
     router.post('/signup', authCtr.signup);
-    router.post('/account',check(['email','password'], "Los campos son requeridos").notEmpty().trim(),authCtr.getAccount);
+    router.post('/account',
+    check(['email','password'],"fields empty").notEmpty().exists({chekFalsy: true}).trim(),
+    check('password',"minim character 6").isLength({min: 6}),
+    check('email',"No es un email valido").isEmail(),
+    authCtr.getAccount);
     return router
 }
 
