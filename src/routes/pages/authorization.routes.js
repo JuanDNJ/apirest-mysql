@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { AuthorizationCtr } from '../../controllers/authentification.ctr.js';
+import { AuthorizationCtr } from '../../controllers/authorization.ctr.js';
 // import { check  } from "express-validator"
 import { schemaSignin } from '../../validators/index.js';
 

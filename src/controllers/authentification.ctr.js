@@ -1,7 +1,7 @@
 import { db } from "../db/index.js"
 import { validationResult, matchedData } from "express-validator"
 import { validField, handlerHashString, handlerCompareHashString, handlerJwtSign } from "../helpers/index.js"
-export class AuthorizationCtr {
+export class AuthentificationCtr {
 
     constructor(model) {
         this.model = model

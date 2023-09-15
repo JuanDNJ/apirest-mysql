@@ -2,7 +2,7 @@ import { db } from "../../db/index.js"
 const pool = await db('api')
 if (!pool) throw new Error("No hay conexion con la base de datos")
 
-export default class AuthorizationMod {
+export default class AuthentificationMod {
     constructor() {
 
     }

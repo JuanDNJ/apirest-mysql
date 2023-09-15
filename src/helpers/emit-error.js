@@ -5,24 +5,24 @@ const emitError = (options) => {
             const temArray = options.split(",")
             newError.name = temArray[1]
             newError.message = temArray[0]
-            if(temArray[2] && temArray[2].length > 0){
+            if (temArray[2] && temArray[2].length > 0) {
                 newError.stack = temArray[2]
             }
-            
-        } 
+
+        }
         if (typeof options === 'object') {
             if (Array.isArray(options)) {
                 newError.name = options[1]
                 newError.message = options[0]
-                if(options[2] && options[2].length > 0){
+                if (options[2] && options[2].length > 0) {
                     newError.stack = options[2]
                 }
-            
+
             } else {
                 const { name, message, stack } = options
                 newError.name = name
                 newError.message = message
-                if(stack && stack.length > 0){
+                if (stack && stack.length > 0) {
                     newError.stack = stack
                 }
 
