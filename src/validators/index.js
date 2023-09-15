@@ -1,16 +1,16 @@
 import { checkSchema } from "express-validator";
 
-export const schemaSignin = checkSchema({
+export const signinAuthValidationScheme = checkSchema({
     email: {
         isEmail: {
             errorMessage: 'Tiene que ser de tipo email.'
         },
         notEmpty: {
             errorMessage: 'No puede estar vacio.'
-        }, 
-        trim: true, 
-        exists: true, 
-        
+        },
+        trim: true,
+        exists: true,
+
     },
     password: {
         exists: true,
@@ -24,6 +24,6 @@ export const schemaSignin = checkSchema({
                 min: 6,
             }
         },
-       
+
     }
 })

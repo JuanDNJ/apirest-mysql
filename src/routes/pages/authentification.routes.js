@@ -1,17 +1,17 @@
 import { Router } from 'express';
 import { AuthentificationCtr } from '../../controllers/authentification.ctr.js';
 // import { check  } from "express-validator"
-import { schemaSignin } from '../../validators/index.js';
+import { signinAuthValidationScheme } from '../../validators/index.js';
 
 const createRouter = (authMod) => {
 
     const authCtr = new AuthentificationCtr(authMod)
     const router = Router();
 
-    router.post('/signin', authCtr.signin);
+    router.post('/signin', signinAuthValidationScheme, authCtr.signin);
     router.post('/signup', authCtr.signup);
-    router.post('/account', schemaSignin,
-        authCtr.getAccount);
+    router.post('/account', signinAuthValidationScheme,
+        authCtr.getAccount); // endpoint de prueba
     return router
 }
 

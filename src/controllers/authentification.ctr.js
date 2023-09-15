@@ -37,22 +37,24 @@ export class AuthentificationCtr {
     }
     signin = async (req, res) => {
         try {
-            const { email, password } = req.body
-            const account = await this.model.signin(email)
-            if (!account) return res.status(401).json({
-                exist: false,
-                message: 'No autorizado'
-            })
+            const result = validationResult(req)
 
-            const verifyAccount = await handlerCompareHashString(password, account.password)
-
-            if (!verifyAccount) return res.status(401).json({
-                exist: false,
-                message: 'No autorizado'
-            })
-            return res.status(200).json({
-                exist: true,
-                token: account.token
+            if (result.isEmpty()) {
+                const data = matchedData(req)
+                const dbRecord = await this.model.getAccount(data.email)
+                if (!dbRecord) return res.status(401).json({ message: 'No autorizado' })
+                if (dbRecord && !await handlerCompareHashString(data.password, dbRecord.password)) return res.status(401).json({ message: 'No autorizado' })
+                const account = {
+                    id: dbRecord.id,
+                    name: dbRecord.name,
+                    email: dbRecord.email,
+                    token: dbRecord.token,
+                    data_account: dbRecord.data_account
+                }
+                return res.status(200).json(account)
+            }
+            res.status(401).json({
+                errors: result.array()
             })
         } catch (error) {
             return res.status(500).json({
