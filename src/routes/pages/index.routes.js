@@ -1,7 +1,7 @@
 import { Router } from "express"; // importar express
 
-import createRouter from "./authorization.routes.js";
-import AuthorizationMod from "../../models/mysql/authorization.mod.js";
+import createRouter from "./authentification.routes.js";
+import AuthorizationMod from "../../models/mysql/authentification.mod.js";
 const router = Router(); // inicializar router
 const authMod = new AuthorizationMod()
 router.get('/', async (req, res) => { // ruta inicial
@@ -12,6 +12,6 @@ router.get('/', async (req, res) => { // ruta inicial
 
 });
 
-router.use("/authorization", createRouter(authMod));
+router.use("/authentification", createRouter(authMod));
 
 export default router; // exportar router
