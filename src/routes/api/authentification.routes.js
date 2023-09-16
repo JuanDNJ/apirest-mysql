@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { AuthentificationCtr } from '../../controllers/authentification.ctr.js';
+import { AuthentificationCtr } from '../../controllers/api/authentification.ctr.js';
 // import { check  } from "express-validator"
 import { signinAuthValidationScheme } from '../../validators/index.js';
 

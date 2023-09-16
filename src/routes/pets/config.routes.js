@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { config } from "../../controllers/api/config.ctr.js";
+import { config } from "../../controllers/pets/config.ctr.js";
 
 const router = Router();
 

@@ -3,10 +3,10 @@ import { checkSchema } from "express-validator";
 export const signinAuthValidationScheme = checkSchema({
     email: {
         isEmail: {
-            errorMessage: 'Tiene que ser de tipo email.'
+            errorMessage: 'It has to be email type.'
         },
         notEmpty: {
-            errorMessage: 'No puede estar vacio.'
+            errorMessage: 'It cant be empty.'
         },
         trim: true,
         exists: true,
@@ -16,14 +16,24 @@ export const signinAuthValidationScheme = checkSchema({
         exists: true,
         trim: true,
         notEmpty: {
-            errorMessage: 'El campo no puede estar vacio.'
+            errorMessage: 'The field cannot be empty.'
         },
         isLength: {
-            errorMessage: 'La contraseña tiene que tener un minimo de 6 caracteres',
+            errorMessage: 'The password must be a minimum of 6 characters',
             options: {
                 min: 6,
             }
         },
 
+    }
+})
+
+export const idValidationScheme = checkSchema({
+    id: {
+        notEmpty: {
+            errorMessage: 'It cant be empty.'
+        },
+        trim: true,
+        exists: true
     }
 })
