@@ -9,7 +9,8 @@ router.get('/', async (req, res) => { // ruta inicial
         title: "Bienvenido!"
     }
     res.status(200).json({
-        message: "Api Rest MySql"
+        message: "Api server",
+        url: 'http://localhost:5174/'
     })
     // res.redirect("http://apimysql/")
 

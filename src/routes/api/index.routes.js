@@ -5,7 +5,7 @@ const router = Router()
 
 router.get("/api", (req, res) => {
     res.json({
-        message: "Get url Api"
+        message: "Api Rest"
     })
 })
 
