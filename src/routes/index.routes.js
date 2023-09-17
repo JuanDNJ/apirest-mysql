@@ -1,21 +1,13 @@
-import { Router } from "express"; // importar express
+import apiRoutes from "./api/index.routes.js";
+import soccerTeams from "./equipos-futbol/index.routes.js";
+import phoneBook from "./guia-telefonica/index.routes.js";
+import shelters from "./refugios/index.routes.js";
+import pets from "./pets/index.routes.js";
 
-import createRouter from "./api/authentification.routes.js";
-import AuthentificationMod from "../models/mysql/authentification.mod.js";
-const router = Router(); // inicializar router
-const authMod = new AuthentificationMod()
-router.get('/', async (req, res) => { // ruta inicial
-    const data = {
-        title: "Bienvenido!"
-    }
-    res.status(200).json({
-        message: "Api server",
-        url: 'http://localhost:5174/'
-    })
-    // res.redirect("http://apimysql/")
-
-});
-
-router.use("/authentification", createRouter(authMod));
-
-export default router; // exportar router
+export {
+    apiRoutes,
+    soccerTeams,
+    phoneBook,
+    shelters,
+    pets
+}

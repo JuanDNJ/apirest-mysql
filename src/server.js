@@ -2,16 +2,12 @@ import app from "./app.js";
 import { page404, page500 } from "./midlewares/index.js";
 
 // Routes
-import homeRouter from "./routes/index.routes.js";
-import apiRouter from "./routes/api/index.routes.js";
-import soccerTeams from "./routes/equipos-futbol/index.routes.js";
-import phoneBook from "./routes/guia-telefonica/index.routes.js";
-import shelters from "./routes/refugios/index.routes.js";
-import pets from "./routes/pets/index.routes.js"
+import homeRoutes from "./routes/home.routes.js";
+import { apiRoutes, soccerTeams, phoneBook, shelters, pets } from "./routes/index.routes.js"
 
 // use routes
-app.use(homeRouter); // use homeRouter
-app.use(apiRouter);
+app.use(homeRoutes); // use homeRouter
+app.use(apiRoutes);
 app.use(soccerTeams);
 app.use(phoneBook);
 app.use(shelters);
