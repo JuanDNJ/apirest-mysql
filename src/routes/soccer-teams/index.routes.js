@@ -1,6 +1,8 @@
 import Router from "express"
-import equipos, { SoccerTeamsCtr } from "../../controllers/soccer-teams/equipos.ctr.js"
 
+import { soccerCtr } from "../../controllers/index.controllers.js"
+
+const { SoccerTeamsCtr } = soccerCtr
 const equiposFutbolRouter = Router()
 const soccerTeamsCtr = new SoccerTeamsCtr()
 

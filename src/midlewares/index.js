@@ -8,6 +8,22 @@ export const page500 = (err, req, res, next) => {
     return res.status(500).json({ error: "500 - Internal server error" })
 }
 
+export const getToken = async (req, res, next) => {
+    try {
+        const query = req.query
+        const authorization = req.headers["authorization"]
+        const token = query.token ?? authorization ? authorization.split(" ")[1] : ''
+        if (!token) return res.status(401).json({ message: `Not autorized¡` })
+        req.token = token
+
+        next()
+    } catch (error) {
+        return res.status(500).json({
+            error
+        })
+    }
+}
+
 export const accountVerified = async (req, res, next) => {
     try {
 
@@ -18,21 +34,6 @@ export const accountVerified = async (req, res, next) => {
             ...isToken.sub,
             token: req.token
         }
-        next()
-    } catch (error) {
-        return res.status(500).json({
-            error
-        })
-    }
-}
-export const getToken = async (req, res, next) => {
-    try {
-        const query = req.query
-        const authorization = req.headers["authorization"]
-        const token = query.token ?? authorization ? authorization.split(" ")[1] : ''
-        if (!token) return res.status(401).json({ message: `Not autorized¡` })
-        req.token = token
-
         next()
     } catch (error) {
         return res.status(500).json({

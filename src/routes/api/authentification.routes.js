@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { AuthentificationCtr } from '../../controllers/api/authentification.ctr.js';
 // import { check  } from "express-validator"
+import { apiCtr } from '../../controllers/index.controllers.js';
 import { signinAuthValidationScheme } from '../../validators/index.js';
 
+const { AuthentificationCtr } = apiCtr
 const createRouter = (authMod) => {
 
     const authCtr = new AuthentificationCtr(authMod)

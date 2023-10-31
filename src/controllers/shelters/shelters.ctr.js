@@ -5,7 +5,7 @@ import { db } from "../../db/index.js"
 const pool = await db('refugios')
 if (!pool) throw new Error("No hay conexion con la base de datos")
 
-export const refugios = {
+export const shelters = {
     all: async (req, res) => {
         try {
             const query = await pool.query("SELECT * FROM refugios");
