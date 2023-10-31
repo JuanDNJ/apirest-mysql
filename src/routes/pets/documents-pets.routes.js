@@ -1,8 +1,8 @@
 import { Router } from "express"; // importar express
-import { docsPets } from "../../controllers/pets/documents-pets.ctr.js"; // importar objeto con los métodos de la API
+import { petsCtr } from "../../controllers/index.controllers.js";
 const router = Router(); // inicializar router
 
-router.get('/', docsPets.getAll)
-router.get('/doc/:idPet', docsPets.get)
+router.get('/', petsCtr.docsPets.getAll)
+router.get('/doc/:idPet', petsCtr.docsPets.get)
 
 export default router; // exportar router

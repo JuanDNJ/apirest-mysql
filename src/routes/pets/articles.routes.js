@@ -1,13 +1,13 @@
 import { Router } from "express";
-import { articles } from "../../controllers/pets/articles.ctr.js";
+import { petsCtr } from "../../controllers/index.controllers.js";
 
 const router = Router();
 
-router.get('/', articles.all)
-router.get('/search/:search', articles.search)
-router.post('/article', articles.create)
-router.delete('/', articles.delete)
-router.put('/', articles.update)
-router.get('/article/:article', articles.get)
+router.get('/', petsCtr.articles.all)
+router.get('/search/:search', petsCtr.articles.search)
+router.post('/article', petsCtr.articles.create)
+router.delete('/', petsCtr.articles.delete)
+router.put('/', petsCtr.articles.update)
+router.get('/article/:article', petsCtr.articles.get)
 
 export default router;

@@ -1,9 +1,9 @@
 import { db } from "../../db/index.js"
 
 const pool = await db('guia_telefonica')
-if(!pool) throw new Error("No hay conexion con la base de datos")
+if (!pool) throw new Error("No hay conexion con la base de datos")
 
-export const guia = {
+export const phones = {
     get: {
         all: async (req, res) => {
             try {
@@ -25,22 +25,22 @@ export const guia = {
             }
         },
         searchByName: async (req, res) => {
-            try{
+            try {
                 const { nombre } = req.params
                 const contactos = await pool.query(`SELECT * FROM contactos WHERE nombre LIKE '%${nombre}%'`)
-                const result =  contactos[0]
+                const result = contactos[0]
                 res.status(200).json(result)
-            }catch(error){
+            } catch (error) {
                 res.status(500).json(error)
             }
         },
         searchByPhone: async (req, res) => {
-            try{
+            try {
                 const { telefono } = req.params
                 const contactos = await pool.query(`SELECT * FROM contactos WHERE telefono LIKE '%${telefono}%'`)
-                const result =  contactos[0]
+                const result = contactos[0]
                 res.status(200).json(result)
-            }catch(error){
+            } catch (error) {
                 res.status(500).json(error)
             }
         }
@@ -50,7 +50,7 @@ export const guia = {
             try {
                 const { id } = req.params
                 const contacto = await pool.query("DELETE FROM contactos WHERE idContacto=" + id)
-                const result =  contacto[0]
+                const result = contacto[0]
                 res.status(200).json(result)
             } catch (error) {
                 res.status(500).json(error)
@@ -63,7 +63,7 @@ export const guia = {
                 const { nombre, telefono } = req.body
                 const { id } = req.params
                 const contacto = await pool.query(`UPDATE contactos SET nombre='${nombre}', telefono='${telefono}' WHERE idContacto=${id}`)
-                const result =  contacto[0]
+                const result = contacto[0]
                 res.status(200).json(result)
             } catch (error) {
                 res.status(500).json(error)
@@ -82,5 +82,5 @@ export const guia = {
             }
         }
     }
-    
+
 }

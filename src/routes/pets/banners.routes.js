@@ -1,7 +1,8 @@
 import { Router } from "express"; // importar express
-import banners from "../../controllers/pets/banners.ctr.js"; // importar objeto con los métodos de la API
+import { petsCtr } from "../../controllers/index.controllers.js"
+
 const router = Router(); // inicializar router
 
-router.get('/', banners.getAll)
+router.get('/', petsCtr.banners.getAll)
 
 export default router; // exportar router

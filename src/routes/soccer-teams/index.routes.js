@@ -1,10 +1,10 @@
 import Router from "express"
-import equipos from "../../controllers/equipos-futbol/equipos.ctr.js"
+import equipos, { SoccerTeamsCtr } from "../../controllers/soccer-teams/equipos.ctr.js"
 
 const equiposFutbolRouter = Router()
+const soccerTeamsCtr = new SoccerTeamsCtr()
 
-
-equiposFutbolRouter.get("/soccerTeams", equipos.get.all)
+equiposFutbolRouter.get("/soccerTeams", soccerTeamsCtr.all)
 equiposFutbolRouter.get("/soccerTeams/get-club/:name",
     async (req, res) => {
 

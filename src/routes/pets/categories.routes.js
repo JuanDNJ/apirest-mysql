@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { categories } from "../../controllers/pets/categories.ctr.js";
+import { petsCtr } from "../../controllers/index.controllers.js";
 
 const router = Router();
 
-router.get('/', categories.all)
+router.get('/', petsCtr.categories.all)
 
 export default router;

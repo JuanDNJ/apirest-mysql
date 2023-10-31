@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { config } from "../../controllers/pets/config.ctr.js";
+
+import { petsCtr } from "../../controllers/index.controllers.js";
 
 const router = Router();
 
@@ -13,7 +14,7 @@ router.use((req, res, next) => {
         throw new Error(error)
     }
 })
-router.get('/', config.all)
-router.get('/:config_id', config.get)
+router.get('/', petsCtr.config.all)
+router.get('/:config_id', petsCtr.config.get)
 
 export default router;

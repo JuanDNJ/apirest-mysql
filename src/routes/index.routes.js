@@ -1,13 +1,14 @@
-import apiRoutes from "./api/index.routes.js";
-import soccerTeams from "./equipos-futbol/index.routes.js";
-import phoneBook from "./guia-telefonica/index.routes.js";
-import shelters from "./refugios/index.routes.js";
+import soccerTeams from "./soccer-teams/index.routes.js";
+import phoneBook from "./phoneBook/index.routes.js";
+import shelters from "./shelters/index.routes.js";
 import pets from "./pets/index.routes.js";
-
+import twitch from "./twitch/index.routes.js";
+import apiRoutes from "./api/index.routes.js";
 export {
-    apiRoutes,
     soccerTeams,
     phoneBook,
     shelters,
-    pets
+    pets,
+    twitch,
+    apiRoutes
 }
