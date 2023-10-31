@@ -1,9 +1,11 @@
 import * as tmi from "tmi.js";
 import { io } from "../../app.js";
+import { twitchOaut } from "../../config/index.js";
+
 const opts = {
     identity: {
         username: 'shacoBot',
-        password: 'oauth:ye50k2cx5ozz48n7o412wrpvelzko4'
+        password: `oauth:${twitchOaut}`
     },
     channels: [
         'juandnjv'

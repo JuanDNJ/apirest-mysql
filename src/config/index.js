@@ -11,3 +11,4 @@ export const IAT = Math.floor(Date.now() / 1000) - 30
 export const EXP = Math.floor(Date.now() / 1000) + (90 * (24 * 60000)) // 3 meses
 export const EXP_USER = Math.floor(Date.now() / 1000) + (30 * (24 * 60000)) // 3 meses
 export const twitchAuthorization = (idClient) => `https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${idClient}&redirect_uri=http://localhost:3000&scope=chat%3Aread+chat%3Aedit`;
+export const twitchOaut = "ye50k2cx5ozz48n7o412wrpvelzko4";
