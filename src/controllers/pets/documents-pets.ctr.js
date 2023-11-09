@@ -15,8 +15,8 @@ export const docsPets = {
     },
     get: async (req, res) => {
         try {
-            const { doc } = req.params
-            const [docPet] = await pool.query(`SELECT * FROM docs_pets WHERE pet_id = ${doc}`)
+            const { idPet } = req.params
+            const [docPet] = await pool.query(`SELECT * FROM docs_pets WHERE pet_id = ${idPet}`)
             if (docPet.length === 0) return res.status(404).json({ error: "Document pet not found" })
             return res.status(200).json(docPet[0])
         } catch (error) {
