@@ -6,6 +6,7 @@ import { config } from './config.ctr.js';
 import { docsPets } from './documents-pets.ctr.js';
 import { frontPage } from './front-page.ctr.js';
 import { users } from './users.ctr.js';
+import { vets } from './vets.ctr.js';
 
 export default {
     pets,
@@ -15,5 +16,6 @@ export default {
     config,
     docsPets,
     frontPage,
-    users
+    users,
+    vets
 }

@@ -7,6 +7,7 @@ import articlesRouter from "./articles.routes.js";
 import configRouter from "./config.routes.js";
 import documentsRouter from "./documents-pets.routes.js"
 import categoriesRouter from "./categories.routes.js"
+import vetsRouter from "./vets.routes.js";
 
 const router = Router(); // inicializar router
 
@@ -18,5 +19,5 @@ router.use("/pets/users", usersRouter) // use usersRouter
 router.use("/pets/config", configRouter) // use configRouter 
 router.use("/pets/documents", documentsRouter) // use configRouter 
 router.use('/pets/categories', categoriesRouter)
-
+router.use('/pets/vets', vetsRouter);
 export default router; // exportar router

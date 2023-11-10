@@ -1,7 +1,7 @@
-import {db} from "../../db/index.js"
+import { db } from "../../db/index.js"
 
 const pool = await db('mascotas')
-if(!pool) throw new Error("No hay conexion con la base de datos")
+if (!pool) throw new Error("No hay conexion con la base de datos")
 
 export const articles = {
     all: async (req, res) => {
