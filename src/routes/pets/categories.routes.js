@@ -3,6 +3,7 @@ import { petsCtr } from "../../controllers/index.controllers.js";
 
 const router = Router();
 
-router.get('/', petsCtr.categories.all)
+router.get('/', petsCtr.categories.all);
+
 
 export default router;
