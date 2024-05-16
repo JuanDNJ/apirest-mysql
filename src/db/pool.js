@@ -35,15 +35,15 @@ pool.getConnection(async (err, connection) => {
 });
 
   const admin = {
-    user_handle: 'juandevnjv',
+    user_handle: 'juan',
     first_name: 'Juan Antonio',
-    last_name: 'Valdivia Camacho',
+    last_name: 'val1 val2',
     email: 'admin@gmail.com',
     password: await handlerHashString('Admin@2023', 10),
     role: 'admin',
     is_Active: 1,
     age: 48,
-    address: 'Sant Boi de Llobregat, Barcelona, España',
+    address: 'Llobregat, Barcelona, España',
     photo_url: 'http://localhost:5174/juan-perfil32x32.jpg',
     phone_number: '666 666 666'
   }
